@@ -32,12 +32,18 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
-test{
-		jacoco{
-			append = false
-			destinationFile = file("jacoco/jacocoTest.exec")
-		}
-		reports.junitXml.destination = file("jacoco/test-results")
-		
-		}
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Access-Management',
+                   'Implementation-Version': 1.0,
+                   'Main-Class': 'co.com.ceiba.Main'
+    }
+}
 
+test {
+	jacoco {
+		append = false
+		destinationFile = file("jacoco/jacocoTest.exec")
+	}
+	reports.junitXml.destination =  file("jacoco/test-results")
+}
