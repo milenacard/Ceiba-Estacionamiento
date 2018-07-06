@@ -1,31 +1,19 @@
 package co.com.ceiba.persistencia.entidad;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Entity
-public class VehiculoEntidad {
-	
-	@Id
-	private String placa;
+public class PrecioPorTipoVehiculoEntidad {
 	
 	@OneToOne
 	@JoinColumn(name = "id_tipoVehiculo", referencedColumnName = "id")
 	private TipoVehiculoEntidad tipoVehiculo;
 	
 	@Column
-	private int cilindraje;
-	
-	public String getPlaca() {
-		return placa;
-	}
-	
-	public void setPlaca(String placa) {
-		this.placa = placa;
-	}
+	private int valorhora;
+	@Column
+	private int valordia;
 	
 	public TipoVehiculoEntidad getTipoVehiculo() {
 		return tipoVehiculo;
@@ -35,15 +23,19 @@ public class VehiculoEntidad {
 		this.tipoVehiculo = tipoVehiculo;
 	}
 	
-	public int getCilindraje() {
-		return cilindraje;
+	public int getValorhora() {
+		return valorhora;
 	}
 	
-	public void setCilindraje(int cilindraje) {
-		this.cilindraje = cilindraje;
+	public void setValorhora(int valorhora) {
+		this.valorhora = valorhora;
 	}
 	
+	public int getValordia() {
+		return valordia;
+	}
 	
-	
-
+	public void setValordia(int valordia) {
+		this.valordia = valordia;
+	}
 }
