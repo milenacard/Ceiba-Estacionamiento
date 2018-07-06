@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity(name="FacturaParqueadero")
-public class FacturaEntidad {
+public class FacturaEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,7 +19,7 @@ public class FacturaEntidad {
 	
 	@OneToOne
 	@JoinColumn(name = "id_vehiculo", referencedColumnName = "placa")
-	private VehiculoEntidad vehiculo;
+	private VehiculEntity vehiculo;
 	
 	@Column(nullable = false)
 	private Calendar fechaLlegada;
@@ -36,11 +36,11 @@ public class FacturaEntidad {
 		this.id = id;
 	}
 	
-	public VehiculoEntidad getVehiculo() {
+	public VehiculEntity getVehiculo() {
 		return vehiculo;
 	}
 	
-	public void setVehiculo(VehiculoEntidad vehiculo) {
+	public void setVehiculo(VehiculEntity vehiculo) {
 		this.vehiculo = vehiculo;
 	}
 	

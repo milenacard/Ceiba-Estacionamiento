@@ -7,14 +7,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class VehiculoEntidad {
+public class VehiculEntity {
 	
 	@Id
 	private String placa;
 	
 	@OneToOne
 	@JoinColumn(name = "id_tipoVehiculo", referencedColumnName = "id")
-	private TipoVehiculoEntidad tipoVehiculo;
+	private TipoVehiculoEntity tipoVehiculo;
 	
 	@Column
 	private int cilindraje;
@@ -27,11 +27,11 @@ public class VehiculoEntidad {
 		this.placa = placa;
 	}
 	
-	public TipoVehiculoEntidad getTipoVehiculo() {
+	public TipoVehiculoEntity getTipoVehiculo() {
 		return tipoVehiculo;
 	}
 	
-	public void setTipoVehiculo(TipoVehiculoEntidad tipoVehiculo) {
+	public void setTipoVehiculo(TipoVehiculoEntity tipoVehiculo) {
 		this.tipoVehiculo = tipoVehiculo;
 	}
 	

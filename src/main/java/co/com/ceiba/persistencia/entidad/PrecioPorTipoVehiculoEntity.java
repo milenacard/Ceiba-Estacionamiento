@@ -4,22 +4,22 @@ import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-public class PrecioPorTipoVehiculoEntidad {
+public class PrecioPorTipoVehiculoEntity {
 	
 	@OneToOne
 	@JoinColumn(name = "id_tipoVehiculo", referencedColumnName = "id")
-	private TipoVehiculoEntidad tipoVehiculo;
+	private TipoVehiculoEntity tipoVehiculo;
 	
 	@Column
 	private int valorhora;
 	@Column
 	private int valordia;
 	
-	public TipoVehiculoEntidad getTipoVehiculo() {
+	public TipoVehiculoEntity getTipoVehiculo() {
 		return tipoVehiculo;
 	}
 	
-	public void setTipoVehiculo(TipoVehiculoEntidad tipoVehiculo) {
+	public void setTipoVehiculo(TipoVehiculoEntity tipoVehiculo) {
 		this.tipoVehiculo = tipoVehiculo;
 	}
 	
