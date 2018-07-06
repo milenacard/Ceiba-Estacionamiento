@@ -11,7 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class CeibaEstacionamientoApplicationTests {
 
-	@Test public void testSomeLibraryMethod() {
+	@Test 
+	public void testSomeLibraryMethod() {
 		CeibaEstacionamientoApplication classUnderTest = new CeibaEstacionamientoApplication();
         assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
     }
