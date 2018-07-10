@@ -34,7 +34,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Access-Management',
+        attributes 'Implementation-Title': 'ADN-Ceiba',
                    'Implementation-Version': 1.0,
                    'Main-Class': 'co.com.ceiba.Main'
     }
