@@ -18,8 +18,8 @@ public class FacturaEntity {
 	private int id;
 	
 	@OneToOne
-	@JoinColumn(name = "id_vehiculo", referencedColumnName = "placa")
-	private VehiculEntity vehiculo;
+	@JoinColumn(name = "id_vehiculo", referencedColumnName = "placa", nullable=false)
+	private VehiculoEntity vehiculo;
 	
 	@Column(nullable = false)
 	private Calendar fechaLlegada;
@@ -36,11 +36,11 @@ public class FacturaEntity {
 		this.id = id;
 	}
 	
-	public VehiculEntity getVehiculo() {
+	public VehiculoEntity getVehiculo() {
 		return vehiculo;
 	}
 	
-	public void setVehiculo(VehiculEntity vehiculo) {
+	public void setVehiculo(VehiculoEntity vehiculo) {
 		this.vehiculo = vehiculo;
 	}
 	

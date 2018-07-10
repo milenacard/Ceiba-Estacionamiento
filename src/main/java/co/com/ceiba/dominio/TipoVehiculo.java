@@ -4,6 +4,11 @@ public class TipoVehiculo {
 	private int codigo;
 	private String nombre;
 	
+	
+	public TipoVehiculo() {
+		
+	}
+	
 	public TipoVehiculo(int codigo, String nombre) {
 		this.codigo = codigo;
 		this.nombre = nombre;

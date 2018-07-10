@@ -7,6 +7,10 @@ public class Vehiculo {
 	private int cilindraje;
 	private TipoVehiculo tipoVehiculo;
 	
+	public Vehiculo() {
+		//Empty constructor for jpa/hibernate
+	}
+	
 	public Vehiculo(String placa, int cilindraje, TipoVehiculo tipoVehiculo) {
 		this.placa = placa;
 		this.cilindraje = cilindraje;

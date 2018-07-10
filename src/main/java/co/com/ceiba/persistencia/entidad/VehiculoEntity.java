@@ -5,19 +5,26 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
-public class VehiculEntity {
+public class VehiculoEntity {
 	
 	@Id
 	private String placa;
 	
 	@OneToOne
+	@NotNull
 	@JoinColumn(name = "id_tipoVehiculo", referencedColumnName = "id")
 	private TipoVehiculoEntity tipoVehiculo;
 	
 	@Column
+	@NotNull
 	private int cilindraje;
+	
+//	public VehiculoEntity() {
+//		//Empty constructor for jpa/hibernate
+//	}
 	
 	public String getPlaca() {
 		return placa;
