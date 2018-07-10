@@ -4,6 +4,8 @@ import co.com.ceiba.dominio.TipoVehiculo;
 import co.com.ceiba.persistencia.entidad.TipoVehiculoEntity;
 
 public final class TipoVehiculoBuilder {
+	
+	private TipoVehiculoBuilder () {}
 
 	public static TipoVehiculo convertirADominio(TipoVehiculoEntity tipoVehiculoEntity) {
 		return new TipoVehiculo(tipoVehiculoEntity.getId(), tipoVehiculoEntity.getNombre());

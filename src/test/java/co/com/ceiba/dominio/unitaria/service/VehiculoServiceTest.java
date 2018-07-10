@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.repositorio.VehiculoRepository;
 import co.com.ceiba.dominio.servicio.VehiculoService;
+import co.com.ceiba.testdatabuilder.TipoVehiculoTestDataBuilder;
 import co.com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
 
 @SpringBootTest
@@ -32,7 +33,6 @@ public class VehiculoServiceTest {
 		vehiculoBuilder = new VehiculoTestDataBuilder();
 	}
 
-	
 	@Test
 	public void listarVehiculosTest() {
 		//Arrange 
