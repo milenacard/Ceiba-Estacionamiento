@@ -30,12 +30,12 @@ pipeline {
 	 		}
 	 	}
 	 	
-	 	stage('Compile') {
-		 	steps {
-		 		echo "------------>Compile<------------"
-		 		sh 'gradle --b ./Ceiba-Estacionamiento/build.gradle compileJava'
-		 	}
-		 }
+//	 	stage('Compile') {
+//		 	steps {
+//		 		echo "------------>Compile<------------"
+//		 		sh 'gradle --b ./Ceiba-Estacionamiento/build.gradle compileJava'
+//		 	}
+//		 }
 	 	
 		 stage('Unit Tests') {
 			steps{
