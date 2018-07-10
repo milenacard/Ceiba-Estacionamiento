@@ -33,7 +33,7 @@ pipeline {
 	 	stage('Compile') {
 		 	steps {
 		 		echo "------------>Compile<------------"
-		 		sh 'gradle --b ./proyecto1/build.gradle compileJava'
+		 		sh 'gradle --b ./Ceiba-Estacionamiento/build.gradle compileJava'
 		 	}
 		 }
 	 	
