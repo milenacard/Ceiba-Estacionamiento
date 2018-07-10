@@ -8,7 +8,6 @@ public class Vehiculo {
 	private TipoVehiculo tipoVehiculo;
 	
 	public Vehiculo() {
-		//Empty constructor for jpa/hibernate
 	}
 	
 	public Vehiculo(String placa, int cilindraje, TipoVehiculo tipoVehiculo) {
@@ -40,10 +39,8 @@ public class Vehiculo {
 	public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
 		this.tipoVehiculo = tipoVehiculo;
 	}
-	
-	
-	
-	
-	
 
+	public boolean esValidoVehiculo() {
+		return !(getPlaca() == null || getCilindraje() == 0 ||  getTipoVehiculo() == null);
+	}
 }

@@ -22,10 +22,6 @@ public class VehiculoEntity {
 	@NotNull
 	private int cilindraje;
 	
-//	public VehiculoEntity() {
-//		//Empty constructor for jpa/hibernate
-//	}
-	
 	public String getPlaca() {
 		return placa;
 	}
@@ -49,8 +45,4 @@ public class VehiculoEntity {
 	public void setCilindraje(int cilindraje) {
 		this.cilindraje = cilindraje;
 	}
-	
-	
-	
-
 }

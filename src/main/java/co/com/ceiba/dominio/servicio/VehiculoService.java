@@ -3,11 +3,13 @@ package co.com.ceiba.dominio.servicio;
 import java.util.List;
 
 import co.com.ceiba.dominio.Vehiculo;
+import co.com.ceiba.dominio.excepcion.VehiculoException;
 import co.com.ceiba.dominio.repositorio.VehiculoRepository;
 
 public class VehiculoService {
-
 	
+	public static final String VEHICULO_NO_VALIDO = "Vehiculo no valido";
+
 	private VehiculoRepository vehiculoRepository;
 	
 	public VehiculoService(VehiculoRepository vehiculoRepository) {
@@ -19,11 +21,10 @@ public class VehiculoService {
 	}
 	
 	public void crear(Vehiculo vehiculo) {
-		//verificar que el vehiculo no tenga campos nullos
-		//ej if(!esValidoVehiculo()){
-		//return exception
-		//}
+		if(!vehiculo.esValidoVehiculo()){
+			throw new VehiculoException(VEHICULO_NO_VALIDO);
+		}else {
 		vehiculoRepository.registar(vehiculo);
-	}
-	
+		}
+	}	
 }
