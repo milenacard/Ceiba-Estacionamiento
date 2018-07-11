@@ -16,8 +16,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import co.com.ceiba.WebApplication;
 import co.com.ceiba.dominio.Vehiculo;
+import co.com.ceiba.persistencia.builder.TipoVehiculoBuilder;
 import co.com.ceiba.persistencia.builder.VehiculoBuilder;
+import co.com.ceiba.persistencia.jpa.TipoVehiculoJpa;
 import co.com.ceiba.persistencia.jpa.VehiculoJpa;
+import co.com.ceiba.testdatabuilder.TipoVehiculoTestDataBuilder;
 import co.com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
 import co.com.ceiba.web.controlador.VehiculoController;
 
@@ -31,12 +34,18 @@ public class VehiculoControllerTest {
 	
 	@Autowired
 	private VehiculoJpa vehiculoJpa;
+
+	@Autowired
+	private TipoVehiculoJpa tipoVehiculoJpa;
 	
 	private VehiculoTestDataBuilder vehiculoTestDataBuilder;
+	private TipoVehiculoTestDataBuilder TipoVehiculoTestDataBuilder;
 	
 	@Before
 	public void setUp() {
 		vehiculoTestDataBuilder = new VehiculoTestDataBuilder();
+		TipoVehiculoTestDataBuilder = new TipoVehiculoTestDataBuilder();
+		tipoVehiculoJpa.save(TipoVehiculoBuilder.convertirAEntidad(TipoVehiculoTestDataBuilder.build()));
 	}
 	
 	@Test
