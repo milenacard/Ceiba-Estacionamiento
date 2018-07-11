@@ -39,11 +39,3 @@ jar {
                    'Main-Class': 'co.com.ceiba.Main'
     }
 }
-
-test {
-	jacoco {
-		append = false
-		destinationFile = file("jacoco/jacocoTest.exec")
-	}
-	reports.junitXml.destination =  file("jacoco/test-results")
-}

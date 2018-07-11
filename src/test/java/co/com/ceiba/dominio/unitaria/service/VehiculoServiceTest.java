@@ -14,8 +14,6 @@ import co.com.ceiba.dominio.repositorio.VehiculoRepository;
 import co.com.ceiba.dominio.servicio.VehiculoService;
 import co.com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
 public class VehiculoServiceTest {
 	
 	private VehiculoRepository vehiculoRepository;
