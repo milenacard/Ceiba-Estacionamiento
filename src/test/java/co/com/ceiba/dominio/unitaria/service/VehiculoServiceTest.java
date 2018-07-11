@@ -2,7 +2,6 @@ package co.com.ceiba.dominio.unitaria.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +9,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.repositorio.VehiculoRepository;
 import co.com.ceiba.dominio.servicio.VehiculoService;
-import co.com.ceiba.testdatabuilder.TipoVehiculoTestDataBuilder;
 import co.com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
 
 @SpringBootTest
@@ -44,7 +41,6 @@ public class VehiculoServiceTest {
 	}
 	
 	private List<Vehiculo> buildVehiculos() {
-		
 		List<Vehiculo> vehiculos = new ArrayList<>();
 		vehiculos.add(vehiculoBuilder.build());
 		return vehiculos;

@@ -24,8 +24,8 @@ public class VehiculoController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public void create(@RequestBody Vehiculo vehiculo) {
-		vehiculoService.crear(vehiculo);
+	public void crear(@RequestBody Vehiculo vehiculo) {
+		vehiculoService.crearVehiculo(vehiculo);
 	}
 
 }

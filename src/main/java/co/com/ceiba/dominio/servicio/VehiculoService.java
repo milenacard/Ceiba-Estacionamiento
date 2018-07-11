@@ -20,7 +20,7 @@ public class VehiculoService {
 		return vehiculoRepository.listar();
 	}
 	
-	public void crear(Vehiculo vehiculo) {
+	public void crearVehiculo(Vehiculo vehiculo) {
 		if(!vehiculo.esValidoVehiculo()){
 			throw new VehiculoException(VEHICULO_NO_VALIDO);
 		}else {
