@@ -1,14 +1,14 @@
-package co.com.ceiba.dominio.servicio;
+package co.com.ceiba.dominio.service;
 
 import java.util.List;
 
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.excepcion.VehiculoException;
-import co.com.ceiba.dominio.repositorio.VehiculoRepository;
+import co.com.ceiba.dominio.repository.VehiculoRepository;
 
 public class VehiculoService {
 	
-	public static final String VEHICLE_WITH_NULL_FIELDS = "Verifique que toda la información del Vehiculo ha sido ingresada, no se permiten campos vacios";
+	public static final String 	VEHICLE_INVALID = "Vehiculo invalido";
 
 	private VehiculoRepository vehiculoRepository;
 	
@@ -21,10 +21,10 @@ public class VehiculoService {
 	}
 	
 	public void crearVehiculo(Vehiculo vehiculo) {
-		if(!vehiculo.esValidoVehiculo()){
-			throw new VehiculoException(VEHICLE_WITH_NULL_FIELDS);
+		if(!vehiculo.esValido()){
+			throw new VehiculoException(VEHICLE_INVALID);
 		}else {
-		vehiculoRepository.registar(vehiculo);
+		vehiculoRepository.crear(vehiculo);
 		}
 	}	
 }

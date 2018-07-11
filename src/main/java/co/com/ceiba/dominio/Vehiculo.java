@@ -40,7 +40,7 @@ public class Vehiculo {
 		this.tipoVehiculo = tipoVehiculo;
 	}
 
-	public boolean esValidoVehiculo() {
+	public boolean esValido() {
 		return !(getPlaca() == null || getCilindraje() == 0 ||  getTipoVehiculo() == null);
 	}
 }

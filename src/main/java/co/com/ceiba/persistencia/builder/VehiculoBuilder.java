@@ -2,8 +2,8 @@ package co.com.ceiba.persistencia.builder;
 
 import co.com.ceiba.dominio.TipoVehiculo;
 import co.com.ceiba.dominio.Vehiculo;
-import co.com.ceiba.persistencia.entidad.TipoVehiculoEntity;
-import co.com.ceiba.persistencia.entidad.VehiculoEntity;
+import co.com.ceiba.persistencia.entity.TipoVehiculoEntity;
+import co.com.ceiba.persistencia.entity.VehiculoEntity;
 
 public final class VehiculoBuilder {
 	

@@ -2,21 +2,31 @@ package co.com.ceiba.dominio;
 
 import java.util.Calendar;
 
-public class Factura {
+public class Registro {
 	
 	private Vehiculo vehiculo;
 	private Calendar fechaLlegada;
 	private Calendar fechaSalida;
 	private double totalPagar;
 	
-	public Factura(Vehiculo vehiculo, Calendar fechaLlegada, Calendar fechaSalida, double totalPagar) {
+	public Registro(Vehiculo vehiculo, Calendar fechaLlegada) {
+		this.vehiculo = vehiculo;
+		this.fechaLlegada = fechaLlegada;
+	}
+	
+	public Registro(Calendar fechaSalida, double totalPagar) {
+		this.fechaSalida = fechaSalida;
+		this.totalPagar = totalPagar;
+	}
+	
+	public Registro(Vehiculo vehiculo, Calendar fechaLlegada, Calendar fechaSalida, double totalPagar) {
 		this.vehiculo = vehiculo;
 		this.fechaLlegada = fechaLlegada;
 		this.fechaSalida = fechaSalida;
 		this.totalPagar = totalPagar;
 	}
-
-	public Factura() {}
+	
+	public Registro() {}
 
 	public Vehiculo getVehiculo() {
 		return vehiculo;

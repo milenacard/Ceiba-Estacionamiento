@@ -1,4 +1,4 @@
-package co.com.ceiba.dominio.repositorio;
+package co.com.ceiba.dominio.repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import co.com.ceiba.dominio.Vehiculo;
 
 public interface VehiculoRepository {
 	
-	void registar (Vehiculo vehiculo);
+	void crear (Vehiculo vehiculo);
 	
 	List<Vehiculo> listar();
 

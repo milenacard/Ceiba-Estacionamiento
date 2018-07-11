@@ -1,4 +1,4 @@
-package co.com.ceiba.persistencia.entidad;
+package co.com.ceiba.persistencia.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-@Entity
+@Entity(name="Vehiculo")
 public class VehiculoEntity {
 	
 	@Id

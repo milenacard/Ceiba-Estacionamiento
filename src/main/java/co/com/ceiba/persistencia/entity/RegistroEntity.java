@@ -1,4 +1,4 @@
-package co.com.ceiba.persistencia.entidad;
+package co.com.ceiba.persistencia.entity;
 
 import java.util.Calendar;
 
@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Entity(name="FacturaParqueadero")
-public class FacturaEntity {
+@Entity(name="RegistroParqueadero")
+public class RegistroEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

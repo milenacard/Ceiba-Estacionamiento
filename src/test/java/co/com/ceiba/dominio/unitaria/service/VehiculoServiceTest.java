@@ -11,8 +11,8 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.excepcion.VehiculoException;
-import co.com.ceiba.dominio.repositorio.VehiculoRepository;
-import co.com.ceiba.dominio.servicio.VehiculoService;
+import co.com.ceiba.dominio.repository.VehiculoRepository;
+import co.com.ceiba.dominio.service.VehiculoService;
 import co.com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
 
 public class VehiculoServiceTest {
@@ -20,7 +20,7 @@ public class VehiculoServiceTest {
 	private VehiculoRepository vehiculoRepository;
 	private VehiculoService vehiculoService;
 	private VehiculoTestDataBuilder vehiculoTestDataBuilderBuilder;
-	private static final String VEHICLE_WITH_NULL_FIELDS = "Verifique que toda la información del Vehiculo ha sido ingresada, no se permiten campos vacios";
+	private static final String VEHICLE_INVALID = "Vehiculo invalido";
 	
 	
 	@Before
@@ -47,7 +47,7 @@ public class VehiculoServiceTest {
 		//Act
 		vehiculoService.crearVehiculo(vehiculo);
 		//Assert
-		Mockito.verify(vehiculoRepository).registar(vehiculo);	
+		Mockito.verify(vehiculoRepository).crear(vehiculo);	
 	}
 	
 	@Test
@@ -58,9 +58,9 @@ public class VehiculoServiceTest {
 		try {
 			//Act
 			vehiculoService.crearVehiculo(vehiculo);
-			fail(VEHICLE_WITH_NULL_FIELDS);
+			fail(VEHICLE_INVALID);
 		} catch (VehiculoException e) {
-			assertEquals((VEHICLE_WITH_NULL_FIELDS), e.getMessage());
+			assertEquals((VEHICLE_INVALID), e.getMessage());
 		}
 	}
 	

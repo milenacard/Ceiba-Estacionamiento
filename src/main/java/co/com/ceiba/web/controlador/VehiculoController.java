@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.com.ceiba.dominio.Vehiculo;
-import co.com.ceiba.dominio.servicio.VehiculoService;
+import co.com.ceiba.dominio.service.VehiculoService;
 
 @RestController
 @RequestMapping("/vehiculo")

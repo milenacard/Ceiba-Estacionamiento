@@ -1,4 +1,4 @@
-package co.com.ceiba.persistencia.repositorio;
+package co.com.ceiba.persistencia.repositoryImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import co.com.ceiba.dominio.Vehiculo;
-import co.com.ceiba.dominio.repositorio.VehiculoRepository;
+import co.com.ceiba.dominio.repository.VehiculoRepository;
 import co.com.ceiba.persistencia.builder.VehiculoBuilder;
-import co.com.ceiba.persistencia.entidad.VehiculoEntity;
+import co.com.ceiba.persistencia.entity.VehiculoEntity;
 import co.com.ceiba.persistencia.jpa.VehiculoJpa;
 
 @Repository
@@ -19,7 +19,7 @@ public class VehiculoRepositoryImpl implements VehiculoRepository {
 	VehiculoJpa vehiculoJpa;
 
 	@Override
-	public void registar(Vehiculo vehiculo) {
+	public void crear(Vehiculo vehiculo) {
 		vehiculoJpa.save(VehiculoBuilder.convertirAEntidad(vehiculo));
 	}
 
