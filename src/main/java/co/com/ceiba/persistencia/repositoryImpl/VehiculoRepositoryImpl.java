@@ -1,4 +1,4 @@
-package co.com.ceiba.persistencia.repositoryImpl;
+package co.com.ceiba.persistencia.repositoryimpl;
 
 import java.util.ArrayList;
 import java.util.List;

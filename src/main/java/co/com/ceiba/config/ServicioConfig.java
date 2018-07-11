@@ -15,9 +15,4 @@ public class ServicioConfig {
 	public VehiculoService instanciarVehiculoService(VehiculoRepository vehiculoRepository) {
 		return new VehiculoService(vehiculoRepository);
 	}
-	
-	@Bean
-	public AdministradorService administradorService(AdministradorRepository administradorRepository) {
-		return new AdministradorService(administradorRepository);
-	}
 }

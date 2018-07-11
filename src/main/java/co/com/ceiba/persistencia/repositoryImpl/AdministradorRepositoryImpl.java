@@ -1,10 +1,13 @@
-package co.com.ceiba.persistencia.repositoryImpl;
+package co.com.ceiba.persistencia.repositoryimpl;
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.repository.AdministradorRepository;
 
+@Service
 public class AdministradorRepositoryImpl implements AdministradorRepository {
 
 	@Override
