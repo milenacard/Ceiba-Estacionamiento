@@ -8,7 +8,7 @@ import co.com.ceiba.dominio.repositorio.VehiculoRepository;
 
 public class VehiculoService {
 	
-	public static final String VEHICULO_NO_VALIDO = "Vehiculo no valido";
+	public static final String VEHICLE_WITH_NULL_FIELDS = "Verifique que toda la información del Vehiculo ha sido ingresada, no se permiten campos vacios";
 
 	private VehiculoRepository vehiculoRepository;
 	
@@ -22,7 +22,7 @@ public class VehiculoService {
 	
 	public void crearVehiculo(Vehiculo vehiculo) {
 		if(!vehiculo.esValidoVehiculo()){
-			throw new VehiculoException(VEHICULO_NO_VALIDO);
+			throw new VehiculoException(VEHICLE_WITH_NULL_FIELDS);
 		}else {
 		vehiculoRepository.registar(vehiculo);
 		}
