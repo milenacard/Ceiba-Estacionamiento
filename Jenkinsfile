@@ -27,6 +27,7 @@ pipeline {
 				doGenerateSubmoduleConfigurations: false, extensions: [], gitTool:	'Git_Centos', 
 				submoduleCfg: [], userRemoteConfigs: [[credentialsId:	'GitHub_milenacard', 
 				url: 'https://github.com/milenacard/Ceiba-Estacionamiento']]])
+				sh 'gradle clean'
 	 		}
 	 	}
 	 	
@@ -34,6 +35,7 @@ pipeline {
 			steps{
 		 		echo "------------>Unit Tests<------------"
 		 		sh 'gradle test'
+		 		junit '​./build/test-results/test/*.xml'
 		 	}
 		 }
 		 
@@ -56,9 +58,7 @@ pipeline {
 		 		echo "------------>Build<------------"
 		 		sh 'gradle --b ./build.gradle build -x test'
 		 	}
-		 }
-		 
-		  
+		 }		  
 	 }
 	 
 	 post {
@@ -68,7 +68,7 @@ pipeline {
 		 success {
 		 		echo 'This will run only if successful'
 		 		junit '​./build/test-results/test/*.xml'
-		 		jacoco './jacoco/test-results/test/*.xml'
+		 		jacoco '.build/jacoco/test-results/test/*.xml'
 		 }
 		 failure {
 		 	echo 'This will run only if failed'
