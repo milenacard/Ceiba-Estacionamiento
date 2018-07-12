@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.repository.AdministradorRepository;
-import co.com.ceiba.persistencia.builder.VehiculoBuilder;
 
 @Repository
 public class AdministradorRepositoryImpl implements AdministradorRepository {

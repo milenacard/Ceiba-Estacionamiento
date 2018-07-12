@@ -17,7 +17,7 @@ public class VehiculoRepositoryImpl implements VehiculoRepository {
 
 	@Autowired
 	VehiculoJpa vehiculoJpa;
-
+	
 	@Override
 	public void crear(Vehiculo vehiculo) {
 		vehiculoJpa.save(VehiculoBuilder.convertirAEntidad(vehiculo));
@@ -33,9 +33,14 @@ public class VehiculoRepositoryImpl implements VehiculoRepository {
 
 	}
 
+//	@Override
+//	public Boolean existeVehiculo (Vehiculo vehiculo) {
+//		return (vehiculoJpa.buscarPorId(vehiculo.getPlaca()) != null);
+//	}
+	
 	@Override
 	public Boolean existeVehiculo (Vehiculo vehiculo) {
-		return (vehiculoJpa.buscarPorId(vehiculo.getPlaca()) != null);
+		return (true);
 	}
 
 }

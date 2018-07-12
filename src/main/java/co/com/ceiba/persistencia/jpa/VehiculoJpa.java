@@ -6,7 +6,8 @@ import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.persistencia.entity.VehiculoEntity;
 
 public interface VehiculoJpa extends JpaRepository<VehiculoEntity, String> {
-	
-	Vehiculo buscarPorId(String id);
-
+//	Vehiculo buscarPorId(String id);
 }
+
+
+
