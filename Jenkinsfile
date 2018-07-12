@@ -35,7 +35,7 @@ pipeline {
 			steps{
 		 		echo "------------>Unit Tests<------------"
 		 		sh 'gradle test'
-		 		junit '​**/build/test-results/test/*.xml'
+		 		junit '​./build/test-results/test/*.xml'
 		 	}
 		 }
 		 
@@ -67,7 +67,7 @@ pipeline {
 	 	}	
 		 success {
 		 		echo 'This will run only if successful'
-		 		junit '​**/build/test-results/test/*.xml'
+		 		junit '​./build/test-results/test/*.xml'
 		 }
 		 failure {
 		 	echo 'This will run only if failed'
