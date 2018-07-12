@@ -6,7 +6,7 @@ import co.com.ceiba.dominio.Registro;
 
 public interface RegistroRepository {
 	
-	void registar (Registro factura);
+	void registar (Registro registro);
 	
 	List<Registro> listar();
 

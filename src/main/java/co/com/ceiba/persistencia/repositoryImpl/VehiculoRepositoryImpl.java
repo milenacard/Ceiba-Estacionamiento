@@ -33,4 +33,9 @@ public class VehiculoRepositoryImpl implements VehiculoRepository {
 
 	}
 
+	@Override
+	public Boolean existeVehiculo (Vehiculo vehiculo) {
+		return (vehiculoJpa.buscarPorId(vehiculo.getPlaca()) != null);
+	}
+
 }

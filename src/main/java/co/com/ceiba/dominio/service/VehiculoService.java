@@ -23,8 +23,10 @@ public class VehiculoService {
 	public void crearVehiculo(Vehiculo vehiculo) {
 		if(!vehiculo.esValido()){
 			throw new VehiculoException(VEHICLE_INVALID);
-		}else {
-		vehiculoRepository.crear(vehiculo);
 		}
-	}	
+		
+		if (!vehiculoRepository.existeVehiculo(vehiculo)) {
+			vehiculoRepository.crear(vehiculo);
+		}
+	}
 }

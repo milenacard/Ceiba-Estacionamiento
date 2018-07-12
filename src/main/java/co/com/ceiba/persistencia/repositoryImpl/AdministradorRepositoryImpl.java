@@ -2,12 +2,12 @@ package co.com.ceiba.persistencia.repositoryimpl;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
+import org.springframework.stereotype.Repository;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.repository.AdministradorRepository;
+import co.com.ceiba.persistencia.builder.VehiculoBuilder;
 
-@Service
+@Repository
 public class AdministradorRepositoryImpl implements AdministradorRepository {
 
 	@Override
@@ -18,6 +18,7 @@ public class AdministradorRepositoryImpl implements AdministradorRepository {
 
 	@Override
 	public void registrarIngresoVehiculo(Vehiculo vehiculo) {
+		
 		// TODO llamar constructor con atributos para ingresar vehiculo
 		// Vehiculo y fecha de ingreso
 		
@@ -29,5 +30,4 @@ public class AdministradorRepositoryImpl implements AdministradorRepository {
 		// Fecha salida y total a pagar
 		
 	}
-
 }

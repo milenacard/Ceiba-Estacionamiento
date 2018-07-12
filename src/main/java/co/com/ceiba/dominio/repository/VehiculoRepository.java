@@ -9,5 +9,7 @@ public interface VehiculoRepository {
 	void crear (Vehiculo vehiculo);
 	
 	List<Vehiculo> listar();
+	
+	Boolean existeVehiculo (Vehiculo vehiculo);
 
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import co.com.ceiba.dominio.Vehiculo;
 
-@Service
+
 public interface AdministradorRepository {
 
 	int contarVehiculos (List<Vehiculo> vehiculos);
