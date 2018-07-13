@@ -1,9 +1,6 @@
 package co.com.ceiba.dominio.repository;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.Vehiculo;
 

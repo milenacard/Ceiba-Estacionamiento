@@ -8,14 +8,13 @@ import org.springframework.stereotype.Repository;
 import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.repository.AdministradorRepository;
-import co.com.ceiba.persistencia.builder.RegistroBuilder;
 import co.com.ceiba.persistencia.jpa.RegistroJpa;
 
 @Repository
 public class AdministradorRepositoryImpl implements AdministradorRepository {
 	
 	@Autowired
-	RegistroJpa RegistroJpa;
+	RegistroJpa registroJpa;
 
 	@Override
 	public int contarVehiculos(List<Vehiculo> vehiculos) {
