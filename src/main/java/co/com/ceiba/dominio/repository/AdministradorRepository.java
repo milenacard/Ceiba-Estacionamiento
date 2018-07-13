@@ -12,5 +12,6 @@ public interface AdministradorRepository {
 	void registrarIngresoVehiculo (Registro registro);
 	
 	void registrarSalidaVehiculo (Registro registro);
-
+	
+	Boolean existeRegistroDeVehiculo (Vehiculo vehiculo);
 }

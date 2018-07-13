@@ -9,5 +9,6 @@ public interface RegistroRepository {
 	void registar (Registro registro);
 	
 	List<Registro> listar();
-
+	
+	List<Registro> vehiculosEnParqueadero();
 }

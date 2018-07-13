@@ -29,4 +29,9 @@ public class RegistroRepositoryImpl implements RegistroRepository{
 		}
 		return registros;
 	}
+
+	@Override
+	public List<Registro> vehiculosEnParqueadero() {
+		return  registroJpa.findByfechaSalidaIsNull();
+	}
 }

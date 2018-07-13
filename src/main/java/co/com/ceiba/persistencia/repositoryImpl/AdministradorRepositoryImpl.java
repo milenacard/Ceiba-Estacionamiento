@@ -15,24 +15,33 @@ public class AdministradorRepositoryImpl implements AdministradorRepository {
 	
 	@Autowired
 	RegistroJpa registroJpa;
+	
+	@Autowired
+	RegistroRepositoryImpl registroRepositoyImp;
 
+	//TODO Contar por tipo de Vehiculo
 	@Override
 	public int contarVehiculos(List<Vehiculo> vehiculos) {
-		// TODO Realizar una consulta SQL a la BD para ver quienes tienen fecha de salida  y total a pagar en Null
-		return 0;
+		List<Registro> vehiculosEnParqueadero = registroJpa.findByfechaSalidaIsNull();
+		return vehiculosEnParqueadero.size();
 	}
 
 	@Override
 	public void registrarIngresoVehiculo(Registro registro) {
-		// TODO llamar constructor con atributos para ingresar vehiculo
-		// Vehiculo y fecha de ingreso
+		registroRepositoyImp.registar(registro);
 		
 	}
 
+	//TODO Como guardo en el mismo registro del vehiculo?
 	@Override
 	public void registrarSalidaVehiculo(Registro registro) {
-		// TODO Llamar constructur para ingresar atributos de salida
-		// Fecha salida y total a pagar
-		
+		if(existeRegistroDeVehiculo(registro.getVehiculo())) {		
+			registroRepositoyImp.registar(registro);
+		}
+	}
+
+	@Override
+	public Boolean existeRegistroDeVehiculo(Vehiculo vehiculo) {
+		return (registroJpa.findByVehiculo(vehiculo.getPlaca())!= null);
 	}
 }
