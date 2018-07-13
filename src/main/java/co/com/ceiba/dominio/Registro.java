@@ -60,10 +60,8 @@ public class Registro {
 		this.totalPagar = totalPagar;
 	}
 	
-	
-	
-	
-	
-	
+	public boolean esValido() {
+		return !(getVehiculo() == null || getFechaLlegada() == null);
+	}
 
 }
