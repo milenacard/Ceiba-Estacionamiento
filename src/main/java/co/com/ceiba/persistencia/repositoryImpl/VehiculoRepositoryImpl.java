@@ -30,7 +30,6 @@ public class VehiculoRepositoryImpl implements VehiculoRepository {
 			vehiculos.add(VehiculoBuilder.convertirADominio(vehiculoEntity));
 		}
 		return vehiculos;
-
 	}
 
 	@Override

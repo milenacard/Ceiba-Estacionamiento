@@ -1,4 +1,4 @@
-package co.com.ceiba.integracion;
+package co.com.ceiba.integracionTest;
 
 import static org.junit.Assert.assertNotNull;
 

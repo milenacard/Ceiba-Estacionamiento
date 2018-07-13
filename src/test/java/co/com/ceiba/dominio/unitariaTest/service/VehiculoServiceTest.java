@@ -1,4 +1,4 @@
-package co.com.ceiba.dominio.unitaria.service;
+package co.com.ceiba.dominio.unitariaTest.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;

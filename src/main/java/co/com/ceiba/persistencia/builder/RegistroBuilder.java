@@ -5,7 +5,7 @@ import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.persistencia.entity.RegistroEntity;
 import co.com.ceiba.persistencia.entity.VehiculoEntity;
 
-public class RegistroBuilder {
+public final class RegistroBuilder {
 	
 	private RegistroBuilder() {}
 	
