@@ -29,7 +29,6 @@ public class AdministradorRepositoryImpl implements AdministradorRepository {
 	@Override
 	public void registrarIngresoVehiculo(Registro registro) {
 		registroRepositoyImp.registar(registro);
-		
 	}
 
 	//TODO Como guardo en el mismo registro del vehiculo?
