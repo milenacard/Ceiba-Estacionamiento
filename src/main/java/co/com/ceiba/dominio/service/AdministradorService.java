@@ -2,8 +2,8 @@ package co.com.ceiba.dominio.service;
 
 import java.util.List;
 
+import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.Vehiculo;
-import co.com.ceiba.dominio.excepcion.VehiculoException;
 import co.com.ceiba.dominio.repository.AdministradorRepository;
 
 public class AdministradorService {
@@ -20,15 +20,11 @@ public class AdministradorService {
 		return administradorRepository.contarVehiculos(vehiculos);	
 	}
 	
-	public void registrarIngresoVehiculo (Vehiculo vehiculo) {
-		if(!vehiculo.esValido()){
-			throw new VehiculoException(VEHICLE_WITH_NULL_FIELDS);
-		}else {
-			administradorRepository.registrarIngresoVehiculo(vehiculo);
-		}
+	public void registrarIngresoVehiculo (Registro registro) {
+		administradorRepository.registrarIngresoVehiculo(registro);
 	}
 	
-	public void registrarSalidaVehiculo (Vehiculo vehiculo) {
-		administradorRepository.registrarSalidaVehiculo(vehiculo);
+	public void registrarSalidaVehiculo (Registro registro) {
+		administradorRepository.registrarSalidaVehiculo(registro);
 	}
 }

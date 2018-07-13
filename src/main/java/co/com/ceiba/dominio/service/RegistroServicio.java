@@ -1,7 +1,9 @@
 package co.com.ceiba.dominio.service;
 
+import java.util.List;
+
+import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.repository.RegistroRepository;
-import co.com.ceiba.dominio.repository.VehiculoRepository;
 
 public class RegistroServicio {
 	
@@ -11,5 +13,11 @@ public class RegistroServicio {
 		this.registroRepository = registroRepository;
 	}
 	
-
+	public List<Registro> listarRegistros(){
+		return registroRepository.listar();
+	}
+	
+	public void crearRegistro(Registro registro) {
+		registroRepository.registar(registro);
+	}
 }

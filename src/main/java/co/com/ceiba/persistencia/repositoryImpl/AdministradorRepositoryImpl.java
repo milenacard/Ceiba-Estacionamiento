@@ -2,12 +2,20 @@ package co.com.ceiba.persistencia.repositoryimpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.repository.AdministradorRepository;
+import co.com.ceiba.persistencia.builder.RegistroBuilder;
+import co.com.ceiba.persistencia.jpa.RegistroJpa;
 
 @Repository
 public class AdministradorRepositoryImpl implements AdministradorRepository {
+	
+	@Autowired
+	RegistroJpa RegistroJpa;
 
 	@Override
 	public int contarVehiculos(List<Vehiculo> vehiculos) {
@@ -16,15 +24,14 @@ public class AdministradorRepositoryImpl implements AdministradorRepository {
 	}
 
 	@Override
-	public void registrarIngresoVehiculo(Vehiculo vehiculo) {
-		
+	public void registrarIngresoVehiculo(Registro registro) {
 		// TODO llamar constructor con atributos para ingresar vehiculo
 		// Vehiculo y fecha de ingreso
 		
 	}
 
 	@Override
-	public void registrarSalidaVehiculo(Vehiculo vehiculo) {
+	public void registrarSalidaVehiculo(Registro registro) {
 		// TODO Llamar constructur para ingresar atributos de salida
 		// Fecha salida y total a pagar
 		

@@ -3,7 +3,7 @@ package co.com.ceiba.dominio;
 import java.util.Calendar;
 
 public class Registro {
-	
+
 	private Vehiculo vehiculo;
 	private Calendar fechaLlegada;
 	private Calendar fechaSalida;

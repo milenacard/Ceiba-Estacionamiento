@@ -7,15 +7,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import co.com.ceiba.dominio.Vehiculo;
-import co.com.ceiba.dominio.service.AdministradorService;
+import co.com.ceiba.dominio.Registro;
+import co.com.ceiba.dominio.service.RegistroServicio;
 
 @RestController
 @RequestMapping("/registro")
 public class RegistroController {
 	
-	// TODO Poner los servicios que voy a exponer LISTAR y CREAR REgistro
-
-
+	@Autowired
+	RegistroServicio registroServicio;
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public List<Registro> listar() {
+		return registroServicio.listarRegistros();
+	}
+	
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public void crear(@RequestBody Registro registro) {
+		registroServicio.crearRegistro(registro);
+	}
 }

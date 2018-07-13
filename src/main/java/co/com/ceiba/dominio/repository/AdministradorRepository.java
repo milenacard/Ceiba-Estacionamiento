@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.Vehiculo;
 
 
@@ -11,8 +12,8 @@ public interface AdministradorRepository {
 
 	int contarVehiculos (List<Vehiculo> vehiculos);
 	
-	void registrarIngresoVehiculo (Vehiculo vehiculo);
+	void registrarIngresoVehiculo (Registro registro);
 	
-	void registrarSalidaVehiculo (Vehiculo vehiculo);
+	void registrarSalidaVehiculo (Registro registro);
 
 }
