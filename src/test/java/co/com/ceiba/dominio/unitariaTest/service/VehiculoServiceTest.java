@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import co.com.ceiba.dominio.Vehiculo;
-import co.com.ceiba.dominio.excepcion.VehiculoException;
+import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 import co.com.ceiba.dominio.repository.VehiculoRepository;
 import co.com.ceiba.dominio.service.VehiculoService;
 import co.com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
@@ -59,7 +59,7 @@ public class VehiculoServiceTest {
 			//Act
 			vehiculoService.crearVehiculo(vehiculo);
 			fail(VEHICLE_INVALID);
-		} catch (VehiculoException e) {
+		} catch (ParqueaderoException e) {
 			assertEquals((VEHICLE_INVALID), e.getMessage());
 		}
 	}

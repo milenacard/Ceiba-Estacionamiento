@@ -20,5 +20,10 @@ public class RegisterTestDataBuilder {
 	public Registro build () {
 		return new Registro(this.vehiculo, this.fechaLlegada);
 	}
+	
+	public RegisterTestDataBuilder setFechaLlegada(Calendar fecha) {
+		this.fechaLlegada  = fecha;
+		return this;
+	}
 
 }

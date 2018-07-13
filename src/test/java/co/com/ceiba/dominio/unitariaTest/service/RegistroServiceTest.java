@@ -1,5 +1,8 @@
 package co.com.ceiba.dominio.unitariaTest.service;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +12,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import co.com.ceiba.dominio.Registro;
+import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 import co.com.ceiba.dominio.repository.RegistroRepository;
 import co.com.ceiba.dominio.service.RegistroServicio;
 import co.com.ceiba.testdatabuilder.RegisterTestDataBuilder;
@@ -19,6 +23,7 @@ public class RegistroServiceTest {
 	private RegistroRepository registroRepository;
 	private RegistroServicio registroServicio;
 	private RegisterTestDataBuilder registerTestDataBuilder;
+	private static final String REGISTER_INVALID = "Registro invalido";
 	
 	@Before
 	public void setUp() {
@@ -46,6 +51,20 @@ public class RegistroServiceTest {
 		registroServicio.crearRegistro(registro);
 		//Assert
 		Mockito.verify(registroRepository).registar(registro);
+	}
+	
+	@Test
+	public void crearRegistroInvalido() {
+		//Arrange
+		Registro registro = registerTestDataBuilder.setFechaLlegada(null).build();
+		//Assert
+		try {
+			//Act
+			registroServicio.crearRegistro(registro);
+			fail(REGISTER_INVALID);
+		} catch (ParqueaderoException e) {
+			assertEquals((REGISTER_INVALID), e.getMessage());
+		}
 	}
 	
 	public List<Registro> buildRegitros() {

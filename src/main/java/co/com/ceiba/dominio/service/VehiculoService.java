@@ -3,7 +3,7 @@ package co.com.ceiba.dominio.service;
 import java.util.List;
 
 import co.com.ceiba.dominio.Vehiculo;
-import co.com.ceiba.dominio.excepcion.VehiculoException;
+import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 import co.com.ceiba.dominio.repository.VehiculoRepository;
 
 public class VehiculoService {
@@ -22,7 +22,7 @@ public class VehiculoService {
 	
 	public void crearVehiculo(Vehiculo vehiculo) {
 		if(!vehiculo.esValido()){
-			throw new VehiculoException(VEHICLE_INVALID);
+			throw new ParqueaderoException(VEHICLE_INVALID);
 		}
 		
 		if (!vehiculoRepository.existeVehiculo(vehiculo)) {
