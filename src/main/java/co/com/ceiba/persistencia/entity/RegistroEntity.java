@@ -4,11 +4,12 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity(name="RegistroParqueadero")
 public class RegistroEntity {
@@ -17,8 +18,8 @@ public class RegistroEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@OneToOne
-	@JoinColumn(name = "id_vehiculo", referencedColumnName = "placa", nullable=false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_vehiculo",referencedColumnName="placa", nullable=false)
 	private VehiculoEntity vehiculo;
 	
 	@Column(nullable = false)

@@ -9,12 +9,11 @@ import co.com.ceiba.dominio.repository.AdministradorRepository;
 public class AdministradorService {
 	
 	AdministradorRepository administradorRepository;
+	public static final String VEHICLE_WITH_NULL_FIELDS = "Verifique que toda la informacion del Registro ha sido ingresada, no se permiten campos vacios";
 	
 	public AdministradorService(AdministradorRepository administradorRepository) {
 		this.administradorRepository = administradorRepository;
 	}
-	
-	public static final String VEHICLE_WITH_NULL_FIELDS = "Verifique que toda la informacion del Registro ha sido ingresada, no se permiten campos vacios";
 	
 	public int contarVehiculos (List<Vehiculo> vehiculos) {
 		return administradorRepository.contarVehiculos(vehiculos);	

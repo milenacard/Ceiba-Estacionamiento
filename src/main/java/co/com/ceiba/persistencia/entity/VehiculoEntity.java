@@ -17,7 +17,7 @@ public class VehiculoEntity {
 	@NotNull
 	@JoinColumn(name = "id_tipoVehiculo", referencedColumnName = "id")
 	private TipoVehiculoEntity tipoVehiculo;
-	
+		
 	@Column
 	@NotNull
 	private int cilindraje;
