@@ -9,6 +9,7 @@ import co.com.ceiba.dominio.repository.VehiculoRepository;
 public class VehiculoService {
 	
 	public static final String 	VEHICLE_INVALID = "Vehiculo invalido";
+	public static final String EXIST_VEHICLE = "Existe un vehiculo en el parqueadero, con la placa ingresada";
 
 	private VehiculoRepository vehiculoRepository;
 	
@@ -25,7 +26,9 @@ public class VehiculoService {
 			throw new ParqueaderoException(VEHICLE_INVALID);
 		}
 		
-		if (!vehiculoRepository.existeVehiculo(vehiculo)) {
+		if (vehiculoRepository.existeVehiculo(vehiculo)) {
+			throw new ParqueaderoException(EXIST_VEHICLE);
+		}else {
 			vehiculoRepository.crear(vehiculo);
 		}
 	}

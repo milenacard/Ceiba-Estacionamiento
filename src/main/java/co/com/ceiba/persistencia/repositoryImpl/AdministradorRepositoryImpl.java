@@ -25,7 +25,7 @@ public class AdministradorRepositoryImpl implements AdministradorRepository {
 
 	@Override
 	public Boolean existeRegistroDeVehiculo(Vehiculo vehiculo) {
-		return (registroJpa.findByVehiculo(vehiculo.getPlaca())!= null);
+		return ((registroJpa.findByVehiculo(vehiculo.getPlaca())!= null) && registroJpa.buscarVehiculoEnParqueadero(vehiculo.getPlaca()) != null);
 	}
 
 	@Override
