@@ -19,13 +19,15 @@ public class RegistroEntity {
 	private int id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_vehiculo",referencedColumnName="placa", nullable=false)
+	@JoinColumn(name = "id_vehiculo", referencedColumnName="placa")
 	private VehiculoEntity vehiculo;
 	
 	@Column(nullable = false)
 	private Calendar fechaLlegada;
+	
 	@Column
 	private Calendar fechaSalida;
+	
 	@Column 
 	private double totalPagar;
 	

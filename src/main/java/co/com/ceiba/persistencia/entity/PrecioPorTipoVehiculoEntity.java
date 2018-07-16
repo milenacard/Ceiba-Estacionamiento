@@ -20,6 +20,7 @@ public class PrecioPorTipoVehiculoEntity {
 	@Column
 	@NotNull
 	private int valorhora;
+	
 	@Column
 	@NotNull
 	private int valordia;

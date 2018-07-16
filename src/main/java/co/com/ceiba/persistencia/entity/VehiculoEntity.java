@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity(name="Vehiculo")
@@ -13,7 +13,7 @@ public class VehiculoEntity {
 	@Id
 	private String placa;
 	
-	@OneToOne
+	@ManyToOne
 	@NotNull
 	@JoinColumn(name = "id_tipoVehiculo", referencedColumnName = "id")
 	private TipoVehiculoEntity tipoVehiculo;

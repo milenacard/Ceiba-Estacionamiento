@@ -21,17 +21,14 @@ public class RegistroRepositoryImpl implements RegistroRepository{
 		registroJpa.save(RegistroBuilder.convertirAEntidad(registro));
 	}
 
+	//TODO Problemas en le findAll()
 	@Override
 	public List<Registro> listar() {
 		List<Registro> registros = new ArrayList<>();
-		for (RegistroEntity registroEntity : registroJpa.findAll()) {
+		List<RegistroEntity> reg = registroJpa.findAll();
+		for (RegistroEntity registroEntity : reg) {
 			registros.add(RegistroBuilder.convertirADominio(registroEntity));
 		}
 		return registros;
-	}
-
-	@Override
-	public List<Registro> vehiculosEnParqueadero() {
-		return  registroJpa.findByfechaSalidaIsNull();
 	}
 }

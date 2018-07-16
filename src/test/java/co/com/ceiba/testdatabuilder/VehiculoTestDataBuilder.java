@@ -6,7 +6,7 @@ import co.com.ceiba.dominio.Vehiculo;
 public class VehiculoTestDataBuilder {
 	
 	private static final int CILINDRAJE = 200;
-	private static final String PLACA = "DGcC851";
+	private static final String PLACA = "AXD851";
 	private TipoVehiculoTestDataBuilder tipoVehiculoTestDataBuilder = new TipoVehiculoTestDataBuilder();
 	
 	private String placa;

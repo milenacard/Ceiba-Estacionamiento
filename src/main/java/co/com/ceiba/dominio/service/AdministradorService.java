@@ -15,15 +15,23 @@ public class AdministradorService {
 		this.administradorRepository = administradorRepository;
 	}
 	
-	public int contarVehiculos (List<Vehiculo> vehiculos) {
-		return administradorRepository.contarVehiculos(vehiculos);	
+	public int contarVehiculos (int idTipoVehiculo) {
+		return administradorRepository.contarVehiculos(idTipoVehiculo);	
 	}
 	
+	//TODO RegistrarEntrada Vehiculo Existe? SI => Vehiculo, fechaLLegada NO=> Cree el vehiculo
 	public void registrarIngresoVehiculo (Registro registro) {
-		administradorRepository.registrarIngresoVehiculo(registro);
+		
 	}
 	
+	//TODO Salida Registro existe? SI => Traiga el registro, fecha salida sea null NO=> Cree el registro
 	public void registrarSalidaVehiculo (Registro registro) {
-		administradorRepository.registrarSalidaVehiculo(registro);
+		
 	}
+		
+//		public void registrarSalidaVehiculo(Registro registro) {
+//			if(existeRegistroDeVehiculo(registro.getVehiculo())) {		
+//				registroRepositoyImp.registar(registro);
+//			}
+//		}
 }
