@@ -26,5 +26,12 @@ public class RegisterTestDataBuilder {
 		this.fechaLlegada  = fecha;
 		return this;
 	}
+	
+	public RegisterTestDataBuilder setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
+		return this;
+	}
+	
+	
 
 }

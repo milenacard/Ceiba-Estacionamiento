@@ -18,4 +18,9 @@ public class TipoVehiculoTestDataBuilder {
 	public TipoVehiculo build() {
 		return new TipoVehiculo(this.codigo, this.nombre);
 	}
+	
+	public TipoVehiculoTestDataBuilder setCodigo(int cod) {
+		this.codigo  = cod;
+		return this;
+	}
 }
