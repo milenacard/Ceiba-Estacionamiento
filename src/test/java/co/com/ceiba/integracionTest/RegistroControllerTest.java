@@ -48,16 +48,14 @@ public class RegistroControllerTest {
 		registerTestDataBuilder = new RegisterTestDataBuilder();
 		vehiculoTestDataBuilder = new VehiculoTestDataBuilder();
 		tipoVehiculoTestDataBuilder = new TipoVehiculoTestDataBuilder();
-		tipoVehiculoJpa.save(TipoVehiculoBuilder.convertirAEntidad(tipoVehiculoTestDataBuilder.build()));
-		vehiculoJpa.save(VehiculoBuilder.convertirAEntidad(vehiculoTestDataBuilder.build()));		
+		tipoVehiculoJpa.saveAndFlush(TipoVehiculoBuilder.convertirAEntidad(tipoVehiculoTestDataBuilder.build()));
+		vehiculoJpa.saveAndFlush(VehiculoBuilder.convertirAEntidad(vehiculoTestDataBuilder.build()));		
 	}
 	
-	//TODO Corregir me esta sacando un error en el listar
 	@Test
 	public void listarRegistroTest() {
 		//Arrange
-		registroJpa.save(RegistroBuilder.convertirAEntidad(registerTestDataBuilder.build()));
-		//registroController.crear(registerTestDataBuilder.build());
+		registroJpa.saveAndFlush(RegistroBuilder.convertirAEntidad(registerTestDataBuilder.build()));
 		//Act
 		List<Registro> registros = registroController.listar();
 		//Assert

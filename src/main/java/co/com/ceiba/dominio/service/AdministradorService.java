@@ -7,23 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.excepcion.ParqueaderoException;
-import co.com.ceiba.dominio.repository.AdministradorRepository;
+import co.com.ceiba.persistencia.jpa.RegistroJpa;
 
 public class AdministradorService {
 	
 	@Autowired
 	VehiculoService vehiculoService;
 	
-	AdministradorRepository administradorRepository;
+	@Autowired
+	RegistroJpa registroJpa;
+
 	public static final String VEHICLE_WITH_NULL_FIELDS = "Verifique que toda la informacion del Registro ha sido ingresada, no se permiten campos vacios";
 	public static final String LISENCE_PLATE_START_WITH_A = "El vehiculo solo puede ingresar los dias Lunes y Domingos";
 	
-	public AdministradorService(AdministradorRepository administradorRepository) {
-		this.administradorRepository = administradorRepository;
-	}
 	
 	public int contarVehiculos (int idTipoVehiculo) {
-		return administradorRepository.contarVehiculos(idTipoVehiculo);	
+		return registroJpa.contarVehiculos(idTipoVehiculo);	
 	}
 	
 	public void registrarIngresoVehiculo (Registro registro) {
@@ -31,11 +30,11 @@ public class AdministradorService {
 	}
 	
 	public void registrarSalidaVehiculo (Registro registro) {
-		if(administradorRepository.existeRegistroDeVehiculo(registro.getVehiculo())) {		
-			//TODO Recuperar el registo para dar salida
-		}else {
-			administradorRepository.registrar(registro);
-		}		
+//		if(administradorRepository.existeRegistroDeVehiculo(registro.getVehiculo())) {		
+//			//TODO Recuperar el registo para dar salida
+//		}else {
+//			administradorRepository.registrar(registro);
+//		}		
 	}
 	
 	public void validarPlaca (String placaVehiculo) {

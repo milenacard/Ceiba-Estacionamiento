@@ -9,4 +9,6 @@ public interface RegistroRepository {
 	void registar (Registro registro);
 	
 	List<Registro> listar();
+	
+	Registro obtenterRegistro(String placa);
 }

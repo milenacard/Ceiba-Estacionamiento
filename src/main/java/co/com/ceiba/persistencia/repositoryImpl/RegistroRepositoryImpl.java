@@ -31,4 +31,9 @@ public class RegistroRepositoryImpl implements RegistroRepository{
 		}
 		return registros;
 	}
+
+	@Override
+	public Registro obtenterRegistro(String placa) {
+		return RegistroBuilder.convertirADominio(registroJpa.findByVehiculo(placa));
+	}
 }

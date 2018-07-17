@@ -2,6 +2,7 @@ package co.com.ceiba.persistencia.repositoryimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,7 +34,7 @@ public class VehiculoRepositoryImpl implements VehiculoRepository {
 	}
 
 	@Override
-	public Boolean existeVehiculo (Vehiculo vehiculo) {
-		return (vehiculoJpa.findById(vehiculo.getPlaca()) != null);
+	public Optional<VehiculoEntity> obtenerPorId(String placa) {
+		return vehiculoJpa.findById(placa);	
 	}
 }
