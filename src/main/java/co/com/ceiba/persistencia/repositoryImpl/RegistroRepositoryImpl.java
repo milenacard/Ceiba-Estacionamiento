@@ -41,4 +41,9 @@ public class RegistroRepositoryImpl implements RegistroRepository{
 		}
 			return null;
 	}
+
+	@Override
+	public int numeroVehiculosEnParqueadero(int idTipoVehiculo) {
+		return registroJpa.contarVehiculos(idTipoVehiculo);	
+	}
 }

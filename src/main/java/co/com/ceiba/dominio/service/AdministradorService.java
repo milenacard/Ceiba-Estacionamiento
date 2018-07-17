@@ -55,7 +55,7 @@ public class AdministradorService {
 	}
 	
 	public int contarVehiculos (int idTipoVehiculo) {
-		return registroJpa.contarVehiculos(idTipoVehiculo);	
+		return registroRepository.numeroVehiculosEnParqueadero(idTipoVehiculo);
 	}
 	
 	public void validarPlaca (String placaVehiculo) {

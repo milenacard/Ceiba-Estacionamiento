@@ -23,6 +23,7 @@ public class RegistroServiceTest {
 	private RegistroRepository registroRepository;
 	private RegistroServicio registroServicio;
 	private RegisterTestDataBuilder registerTestDataBuilder;
+	
 	private static final String REGISTER_INVALID = "Registro invalido";
 	
 	@Before
@@ -30,7 +31,6 @@ public class RegistroServiceTest {
 		registroRepository = Mockito.mock(RegistroRepository.class);
 		registroServicio = new RegistroServicio(registroRepository);
 		registerTestDataBuilder = new RegisterTestDataBuilder();
-		
 	}
 	
 	@Test
