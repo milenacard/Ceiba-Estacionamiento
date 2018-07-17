@@ -2,6 +2,8 @@ package co.com.ceiba.persistencia.repositoryimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import co.com.ceiba.dominio.Registro;
@@ -21,7 +23,6 @@ public class RegistroRepositoryImpl implements RegistroRepository{
 		registroJpa.save(RegistroBuilder.convertirAEntidad(registro));
 	}
 
-	//TODO Problemas en le findAll()
 	@Override
 	public List<Registro> listar() {
 		List<Registro> registros = new ArrayList<>();
@@ -34,6 +35,10 @@ public class RegistroRepositoryImpl implements RegistroRepository{
 
 	@Override
 	public Registro obtenterRegistro(String placa) {
-		return RegistroBuilder.convertirADominio(registroJpa.findByVehiculo(placa));
+		Optional<RegistroEntity> registroTmp  = registroJpa.buscarVehiculoEnParqueadero(placa);
+		if(registroTmp.isPresent()) {
+			return RegistroBuilder.convertirADominio(registroTmp.get());
+		}
+			return null;
 	}
 }
