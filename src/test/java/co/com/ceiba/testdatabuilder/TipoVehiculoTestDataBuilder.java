@@ -23,4 +23,9 @@ public class TipoVehiculoTestDataBuilder {
 		this.codigo  = cod;
 		return this;
 	}
+	
+	public TipoVehiculoTestDataBuilder setNombre(String nombre) {
+		this.nombre  = nombre;
+		return this;
+	}
 }

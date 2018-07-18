@@ -3,6 +3,8 @@ package co.com.ceiba.dominio.unitariaTest.service;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.util.Calendar;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,6 +32,8 @@ public class AdministradorServiceTest {
 	private RegisterTestDataBuilder registerTestDataBuilder;
 	private VehiculoTestDataBuilder vehiculoTestDataBuilder;
 	private TipoVehiculoTestDataBuilder tipoVehiculoTestDataBuilder;
+	private Calendar fechaLlegada;
+	private Calendar fechaSalida;
 	
 	@Mock
 	private VehiculoService vehiculoService;
@@ -50,7 +54,10 @@ public class AdministradorServiceTest {
 		registerTestDataBuilder = new RegisterTestDataBuilder();
 		vehiculoTestDataBuilder = new VehiculoTestDataBuilder();
 		tipoVehiculoTestDataBuilder = new TipoVehiculoTestDataBuilder();
-		 MockitoAnnotations.initMocks(this);
+		MockitoAnnotations.initMocks(this);
+		
+		fechaLlegada = Calendar.getInstance();
+		fechaSalida = Calendar.getInstance();
 	}
 	
 	@Test
@@ -132,31 +139,81 @@ public class AdministradorServiceTest {
 		Assert.assertTrue(auxBolean);
 	}
 	
-//	@Test
-//	public void registrarSalidaMotoPorHorasTest() {
-//		
-//	}
-//	
-//	@Test
-//	public void registrarSalidaMotoPorDiasTest() {
-//		
-//	}
-//	
-//
-//	
-//	@Test
-//	public void registrarSalidaCarroPorHorasTest() {
-//		
-//	}
-//	
-//	@Test
-//	public void registrarSalidaCarroPorDiasTest() {
-//		
-//	}
-//	
-//	//TODO Mandar placa que no existe
-//	@Test
-//	public void registrarSalidoVehiculoInvalido() {
-//		
-//	}
+	@Test
+	public void calcularTiempoEnParqueaderoTest() {
+		//Arrange
+		fechaLlegada.set(Calendar.HOUR_OF_DAY, 5);
+		fechaSalida.set(Calendar.HOUR_OF_DAY, 15);
+		//Act
+		int auxInt = administradorService.calcularTiempoEnParqueadero(fechaLlegada, fechaSalida);
+		//Assert
+		Assert.assertEquals(auxInt, 10);
+	}
+	
+	@Test
+	public void CalcularTotalAPagarMotoTest() {
+		//Arrange
+		fechaLlegada.set(Calendar.HOUR_OF_DAY, 5);
+		fechaSalida.set(Calendar.HOUR_OF_DAY, 15);
+		TipoVehiculo tipoVehiculo = tipoVehiculoTestDataBuilder.setCodigo(COD_MOTO).build();
+		Vehiculo vehiculo = vehiculoTestDataBuilder.setCilindraje(400).setTipoVehiculo(tipoVehiculo).build();
+		//Act
+		int auxInt = administradorService.calcularTotalAPagar(vehiculo, fechaLlegada, fechaSalida);
+		//Assert
+		Assert.assertEquals(auxInt, 4000);
+	}
+	
+	@Test
+	public void CalcularTotalAPagarMotoConCilindrajeMaxTest() {
+		//Arrange
+		fechaLlegada.set(Calendar.HOUR_OF_DAY, 5);
+		fechaSalida.set(Calendar.HOUR_OF_DAY, 15);
+		TipoVehiculo tipoVehiculo = tipoVehiculoTestDataBuilder.setCodigo(COD_MOTO).build();
+		Vehiculo vehiculo = vehiculoTestDataBuilder.setCilindraje(650).setTipoVehiculo(tipoVehiculo).build();
+		//Act
+		int auxInt = administradorService.calcularTotalAPagar(vehiculo, fechaLlegada, fechaSalida);
+		//Assert
+		Assert.assertEquals(auxInt, 6000);
+	}
+	
+	@Test
+	public void CalcularTotalAPagarCarroTest() {
+		//Arrange
+		int DiaLlegada = fechaLlegada.get(Calendar.DAY_OF_MONTH);
+		fechaLlegada.set(Calendar.HOUR_OF_DAY, 1);
+		fechaSalida.set(Calendar.DAY_OF_MONTH, DiaLlegada + 1);
+		fechaSalida.set(Calendar.HOUR_OF_DAY, 4);
+		TipoVehiculo tipoVehiculo = tipoVehiculoTestDataBuilder.setCodigo(COD_CARRO).build();
+		Vehiculo vehiculo = vehiculoTestDataBuilder.setCilindraje(0).setTipoVehiculo(tipoVehiculo).build();
+		//Act
+		int auxInt = administradorService.calcularTotalAPagar(vehiculo, fechaLlegada, fechaSalida);
+		//Assert
+		Assert.assertEquals(auxInt, 11000);
+	}
+	
+	@Test
+	public void registrarSalidaTest() {
+		//Arrange
+		Registro registro = registerTestDataBuilder.build();
+		Mockito.when(registroRepository.obtenterRegistro(registro.getVehiculo().getPlaca())).thenReturn(registro);
+		//Act
+		administradorService.registrarSalidaVehiculo(registro);
+		//Assert
+		Mockito.verify(registroRepository).registar(registro);
+	}
+
+	@Test
+	public void registrarSalidoVehiculoInvalido() {
+		//Arrange
+		Vehiculo vehiculo = vehiculoTestDataBuilder.setPlaca("DFR852").build();
+		Registro registro = registerTestDataBuilder.setVehiculo(vehiculo).build();
+		//Assert
+		try {
+			//Act
+			administradorService.registrarSalidaVehiculo(registro);
+			fail(NOT_EXIST_VEHICLE);
+		} catch (ParqueaderoException e) {
+			assertEquals((NOT_EXIST_VEHICLE), e.getMessage());
+		}
+	}
 }
