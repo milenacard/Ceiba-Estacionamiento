@@ -2,22 +2,20 @@ package co.com.ceiba.dominio.unitariaTest.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import static org.mockito.Mockito.doNothing;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.TipoVehiculo;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 import co.com.ceiba.dominio.repository.RegistroRepository;
-import co.com.ceiba.dominio.repository.VehiculoRepository;
 import co.com.ceiba.dominio.service.AdministradorService;
 import co.com.ceiba.dominio.service.VehiculoService;
 import co.com.ceiba.testdatabuilder.RegisterTestDataBuilder;
@@ -35,7 +33,6 @@ public class AdministradorServiceTest {
 	
 	@Mock
 	private VehiculoService vehiculoService;
-	private VehiculoRepository vehiculoRepository;
 	
 	private static final int COD_MOTO = 1;
 	private static final int COD_CARRO = 2;	
@@ -111,6 +108,7 @@ public class AdministradorServiceTest {
 			assertEquals((THERE_IS_NOT_SPACE_FOR_CARRO), e.getMessage());
 		}
 	}
+
 	
 	@Test
 	public void validarPlacaIniciaconATest() {
@@ -123,4 +121,42 @@ public class AdministradorServiceTest {
 				assertEquals((LISENCE_PLATE_START_WITH_A), e.getMessage());
 		}
 	}
+	
+	@Test
+	public void CilindrajeMayorA500Test() {
+		//Arrange
+		Vehiculo vehiculo= new VehiculoTestDataBuilder().setCilindraje(510).build();
+		//Act
+		Boolean auxBolean = administradorService.validarCilindrajeMoto(vehiculo.getCilindraje());
+		//Assert
+		Assert.assertTrue(auxBolean);
+	}
+	
+//	@Test
+//	public void registrarSalidaMotoPorHorasTest() {
+//		
+//	}
+//	
+//	@Test
+//	public void registrarSalidaMotoPorDiasTest() {
+//		
+//	}
+//	
+//
+//	
+//	@Test
+//	public void registrarSalidaCarroPorHorasTest() {
+//		
+//	}
+//	
+//	@Test
+//	public void registrarSalidaCarroPorDiasTest() {
+//		
+//	}
+//	
+//	//TODO Mandar placa que no existe
+//	@Test
+//	public void registrarSalidoVehiculoInvalido() {
+//		
+//	}
 }
