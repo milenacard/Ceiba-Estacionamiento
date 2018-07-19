@@ -10,7 +10,9 @@ public interface RegistroRepository {
 	
 	List<Registro> listar();
 	
-	Registro obtenterRegistro(String placa);
+	Registro obtenerRegistro(String placa);
 	
 	int numeroVehiculosEnParqueadero(int idTipoVehiculo);
+	
+	void registrarSalida(Registro registro);
 }

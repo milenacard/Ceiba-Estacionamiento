@@ -41,6 +41,6 @@ public class Vehiculo {
 	}
 
 	public boolean esValido() {
-		return !(getPlaca() == null || getCilindraje() == 0 ||  getTipoVehiculo() == null);
+		return !(getPlaca() == null || getTipoVehiculo() == null);
 	}
 }

@@ -34,7 +34,7 @@ public class RegistroRepositoryImpl implements RegistroRepository{
 	}
 
 	@Override
-	public Registro obtenterRegistro(String placa) {
+	public Registro obtenerRegistro(String placa) {
 		Optional<RegistroEntity> registroTmp  = registroJpa.buscarVehiculoEnParqueadero(placa);
 		if(registroTmp.isPresent()) {
 			return RegistroBuilder.convertirADominio(registroTmp.get());
@@ -46,4 +46,23 @@ public class RegistroRepositoryImpl implements RegistroRepository{
 	public int numeroVehiculosEnParqueadero(int idTipoVehiculo) {
 		return registroJpa.contarVehiculos(idTipoVehiculo);	
 	}
+	
+	public RegistroEntity obtenerRegistroRef(String placa) {
+		Optional<RegistroEntity> registroTmp  = registroJpa.buscarVehiculoEnParqueadero(placa);
+		if(registroTmp.isPresent()) {
+			return registroTmp.get();
+		}
+		return null;
+	}
+
+	@Override
+	public void registrarSalida(Registro registro) {
+		RegistroEntity registroEntity = obtenerRegistroRef(registro.getVehiculo().getPlaca());
+		registroEntity.setFechaSalida(registro.getFechaSalida());
+		registroEntity.setTotalPagar(registro.getTotalPagar());
+		registroJpa.save(registroEntity);
+		
+	}
+	
+	
 }

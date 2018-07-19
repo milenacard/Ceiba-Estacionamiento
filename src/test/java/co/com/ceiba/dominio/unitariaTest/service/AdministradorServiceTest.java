@@ -195,11 +195,11 @@ public class AdministradorServiceTest {
 	public void registrarSalidaTest() {
 		//Arrange
 		Registro registro = registerTestDataBuilder.build();
-		Mockito.when(registroRepository.obtenterRegistro(registro.getVehiculo().getPlaca())).thenReturn(registro);
+		Mockito.when(registroRepository.obtenerRegistro(registro.getVehiculo().getPlaca())).thenReturn(registro);
 		//Act
 		administradorService.registrarSalidaVehiculo(registro);
 		//Assert
-		Mockito.verify(registroRepository).registar(registro);
+		Mockito.verify(registroRepository).registrarSalida(registro);
 	}
 
 	@Test

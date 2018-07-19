@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import co.com.ceiba.dominio.repository.RegistroRepository;
 import co.com.ceiba.dominio.repository.VehiculoRepository;
+import co.com.ceiba.dominio.service.AdministradorService;
 import co.com.ceiba.dominio.service.RegistroServicio;
 import co.com.ceiba.dominio.service.VehiculoService;
 
@@ -19,5 +20,10 @@ public class ServicioConfig {
 	@Bean
 	public RegistroServicio instanciarRegistroService(RegistroRepository registroRepository) {
 		return new RegistroServicio(registroRepository);
+	}
+	
+	@Bean
+	public AdministradorService instanciarAdministradorService(RegistroRepository registroRepository) {
+		return new AdministradorService(registroRepository);
 	}
 }

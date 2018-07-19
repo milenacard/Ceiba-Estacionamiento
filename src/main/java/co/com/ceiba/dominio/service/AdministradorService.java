@@ -43,7 +43,9 @@ public class AdministradorService {
 		if (tipoVehiculo == COD_MOTORCYCLE) {
 			if (cantVehiculosEnParqueadero < 10) {
 				validarPlaca(registro.getVehiculo().getPlaca());
-				vehiculoService.crearVehiculo(registro.getVehiculo());
+				if(!vehiculoService.existeVehiculo(registro.getVehiculo().getPlaca())) {
+					vehiculoService.crearVehiculo(registro.getVehiculo());
+				}
 			} else {
 				throw new ParqueaderoException(THERE_IS_NOT_SPACE_FOR_MOTO);
 			}
@@ -61,11 +63,11 @@ public class AdministradorService {
 	public void registrarSalidaVehiculo(Registro registro) {
 		double totalPagar;
 		
-		if (registroRepository.obtenterRegistro(registro.getVehiculo().getPlaca()) != null) {
+		if (registroRepository.obtenerRegistro(registro.getVehiculo().getPlaca()) != null) {
 			registro.setFechaSalida(Calendar.getInstance());
 			totalPagar = calcularTotalAPagar(registro.getVehiculo(), registro.getFechaLlegada(), registro.getFechaSalida());
 			registro.setTotalPagar(totalPagar);
-			registroRepository.registar(registro);
+			registroRepository.registrarSalida(registro);
 		} else {
 			throw new ParqueaderoException(NOT_EXIST_VEHICLE);
 		}

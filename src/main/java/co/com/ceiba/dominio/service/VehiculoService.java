@@ -36,4 +36,9 @@ public class VehiculoService {
 			throw new ParqueaderoException(EXIST_VEHICLE);
 		}		
 	}
+	
+	public Boolean existeVehiculo(String placa) {
+		Optional<VehiculoEntity> vehiculoTmp = vehiculoRepository.obtenerPorId(placa);
+		return vehiculoTmp.isPresent();
+	}
 }
