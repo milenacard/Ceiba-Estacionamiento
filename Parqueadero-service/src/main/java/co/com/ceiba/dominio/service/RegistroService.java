@@ -6,12 +6,12 @@ import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 import co.com.ceiba.dominio.repository.RegistroRepository;
 
-public class RegistroServicio {
+public class RegistroService {
 	
 	private RegistroRepository registroRepository;
 	public static final String 	REGISTER_INVALID = "Registro invalido";
 	
-	public RegistroServicio(RegistroRepository registroRepository) {
+	public RegistroService(RegistroRepository registroRepository) {
 		this.registroRepository = registroRepository;
 	}
 	

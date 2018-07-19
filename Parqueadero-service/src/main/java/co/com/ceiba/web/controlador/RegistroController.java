@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.service.AdministradorService;
-import co.com.ceiba.dominio.service.RegistroServicio;
+import co.com.ceiba.dominio.service.RegistroService;
 
 @RestController
 @RequestMapping("/registro")
 public class RegistroController {
 	
 	@Autowired
-	RegistroServicio registroServicio;
+	RegistroService registroServicio;
 	
 	@Autowired
 	AdministradorService administradorService;
