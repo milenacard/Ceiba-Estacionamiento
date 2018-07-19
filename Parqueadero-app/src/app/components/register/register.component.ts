@@ -1,3 +1,4 @@
+import { RegisterService } from './../../services/register.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private registerService: RegisterService) { }
 
   ngOnInit() {
   }
