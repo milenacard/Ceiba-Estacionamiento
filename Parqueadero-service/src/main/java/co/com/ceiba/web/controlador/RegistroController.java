@@ -21,7 +21,7 @@ public class RegistroController {
 	@Autowired
 	AdministradorService administradorService;
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value = "/listar", method=RequestMethod.GET)
 	public List<Registro> listar() {
 		return registroServicio.listarRegistros();
 	}

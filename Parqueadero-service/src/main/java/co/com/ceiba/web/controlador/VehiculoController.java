@@ -18,7 +18,7 @@ public class VehiculoController {
 	@Autowired
 	private VehiculoService vehiculoService;
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value = "/listar", method=RequestMethod.GET)
 	public List<Vehiculo> listar() {
 		return vehiculoService.listarVehiculos();
 	}
