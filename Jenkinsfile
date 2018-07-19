@@ -35,7 +35,7 @@ pipeline {
 			steps{
 		 		echo "------------>Unit Tests<------------"
 		 		sh 'gradle test'
-		 		junit 'build/test-results/test/*.xml'
+		 		junit 'Parqueadero-service/build/test-results/test/*.xml'
 		 	}
 		 }
 		 
@@ -56,7 +56,7 @@ pipeline {
 		 stage('Build') {
 		 	steps {
 		 		echo "------------>Build<------------"
-		 		sh 'gradle --b ./build.gradle build -x test'
+		 		sh 'gradle --b ./Parqueadero-service/build.gradle build -x test'
 		 	}
 		 }		  
 	 }
