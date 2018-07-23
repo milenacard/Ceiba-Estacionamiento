@@ -38,6 +38,7 @@ public class AdministradorService {
 	public static final String NOT_EXIST_VEHICLE = "Este vehiculo no se encuentra en el parqueadero";
 	public static final String THERE_IS_NOT_SPACE_FOR_MOTO = "No hay cupo para motos en el parqueadero";
 	public static final String THERE_IS_NOT_SPACE_FOR_CARRO = "No hay cupo para carros en el parqueadero";
+	public static final String EXIST_REGISTER = "El registro del vehiculo ya se encuentra ingresado en el sistema";
 
 	public void registrarIngresoVehiculo(Registro registro) {
 		int tipoVehiculo = registro.getVehiculo().getTipoVehiculo().getCodigo();
@@ -46,10 +47,7 @@ public class AdministradorService {
 		if (tipoVehiculo == COD_MOTORCYCLE) {
 			if (cantVehiculosEnParqueadero < 10) {
 				validarPlaca(registro.getVehiculo().getPlaca());
-				if(!vehiculoService.existeVehiculo(registro.getVehiculo().getPlaca())) {
-					vehiculoService.crearVehiculo(registro.getVehiculo());
-				}
-				registroService.crearRegistro(registro);
+				ingresarAParqueadero(registro);
 			} else {
 				throw new ParqueaderoException(THERE_IS_NOT_SPACE_FOR_MOTO);
 			}
@@ -57,10 +55,7 @@ public class AdministradorService {
 
 		if (tipoVehiculo == COD_CAR) {
 			if (cantVehiculosEnParqueadero < 20) {
-				if(!vehiculoService.existeVehiculo(registro.getVehiculo().getPlaca())) {
-					vehiculoService.crearVehiculo(registro.getVehiculo());
-				}
-				registroService.crearRegistro(registro);
+				ingresarAParqueadero(registro);
 			} else {
 				throw new ParqueaderoException(THERE_IS_NOT_SPACE_FOR_CARRO);
 			}
@@ -95,6 +90,16 @@ public class AdministradorService {
 
 	public Boolean validarCilindrajeMoto (int cilindraje) {
 		return cilindraje > CILYNDER_MAX;
+	}
+	
+	public void ingresarAParqueadero(Registro registro) {
+		if(!vehiculoService.existeVehiculo(registro.getVehiculo().getPlaca())) {
+			vehiculoService.crearVehiculo(registro.getVehiculo());
+		}if(registroRepository.obtenerRegistro(registro.getVehiculo().getPlaca()) != null) {
+			throw new ParqueaderoException(EXIST_REGISTER);
+		}else {
+			registroService.crearRegistro(registro);
+		}
 	}
 
 	public int calcularTiempoEnParqueadero(Calendar fechaLlegada, Calendar fechaSalida) {

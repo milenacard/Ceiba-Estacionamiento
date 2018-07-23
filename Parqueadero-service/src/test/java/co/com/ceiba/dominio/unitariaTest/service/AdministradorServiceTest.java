@@ -19,6 +19,7 @@ import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 import co.com.ceiba.dominio.repository.RegistroRepository;
 import co.com.ceiba.dominio.service.AdministradorService;
+import co.com.ceiba.dominio.service.RegistroService;
 import co.com.ceiba.dominio.service.VehiculoService;
 import co.com.ceiba.testdatabuilder.RegisterTestDataBuilder;
 import co.com.ceiba.testdatabuilder.TipoVehiculoTestDataBuilder;
@@ -37,6 +38,9 @@ public class AdministradorServiceTest {
 	
 	@Mock
 	private VehiculoService vehiculoService;
+	
+	@Mock
+	private RegistroService registroService;
 	
 	private static final int COD_MOTO = 1;
 	private static final int COD_CARRO = 2;	
@@ -68,7 +72,7 @@ public class AdministradorServiceTest {
 		//Act
 		administradorService.registrarIngresoVehiculo(registro);
 		//Assert
-		Mockito.verify(vehiculoService).crearVehiculo(registro.getVehiculo());
+		Mockito.verify(registroService).crearRegistro(registro);
 	}
 	
 	@Test
@@ -93,10 +97,11 @@ public class AdministradorServiceTest {
 		Vehiculo vehiculo = vehiculoTestDataBuilder.setTipoVehiculo(tipoVehiculo).build();
 		Registro registro = registerTestDataBuilder.setVehiculo(vehiculo).build();
 		Mockito.when(registroRepository.numeroVehiculosEnParqueadero(COD_CARRO)).thenReturn(19);
+		Mockito.doNothing().when(registroService).crearRegistro(registro);
 		//Act
 		administradorService.registrarIngresoVehiculo(registro);
 		//Assert
-		Mockito.verify(vehiculoService).crearVehiculo(registro.getVehiculo());
+		Mockito.verify(registroService).crearRegistro(registro);
 	}
 	
 	@Test
