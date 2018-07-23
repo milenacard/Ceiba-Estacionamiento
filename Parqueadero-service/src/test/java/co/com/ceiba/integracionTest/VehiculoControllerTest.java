@@ -3,6 +3,7 @@ package co.com.ceiba.integracionTest;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -18,6 +19,7 @@ import co.com.ceiba.WebApplication;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.persistencia.builder.TipoVehiculoBuilder;
 import co.com.ceiba.persistencia.builder.VehiculoBuilder;
+import co.com.ceiba.persistencia.entity.VehiculoEntity;
 import co.com.ceiba.persistencia.jpa.TipoVehiculoJpa;
 import co.com.ceiba.persistencia.jpa.VehiculoJpa;
 import co.com.ceiba.testdatabuilder.TipoVehiculoTestDataBuilder;
@@ -68,5 +70,15 @@ public class VehiculoControllerTest {
 		assertNotNull(vehiculoJpa.findById(vehiculo.getPlaca()));
 	}
 	
+	//TODO Mirar la prueba
+	//@Test
+	public void obtenerVehiculoPorIdTest() {
+		//arrange
+		vehiculoJpa.save(VehiculoBuilder.convertirAEntidad(vehiculoTestDataBuilder.build()));
+		//act
+		Optional<VehiculoEntity> vehiculoPorPlaca = vehiculoController.obtenerPorId(vehiculoTestDataBuilder.build().getPlaca());
+		//assert
+		assertNotNull(vehiculoPorPlaca);
+	}
 	
 }
