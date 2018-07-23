@@ -1,18 +1,32 @@
+body{
+    text-align: center; 
+    margin: 0 auto;
+}
 .title-table{
     padding: 15px;
     text-align: center;
 }
 
-.form-label{
-    padding-left: 20px;
-}
-
-.option-tipovehiculo{
-    color: gray;
-}
-
 .form-register{
-    margin: 10px;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.text-btn_search{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn{
+    margin-left: 2%;
+}
+
+.row{
+    flex-wrap: nowrap; 
+}
+
+.btn-success{
     width: 100%;
-    align-content: center;
+    display: inline-grid;
+    justify-content: center;
 }
