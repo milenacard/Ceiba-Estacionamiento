@@ -30,3 +30,8 @@ body{
     display: inline-grid;
     justify-content: center;
 }
+
+.require{
+    color: red;
+    font-weight: bolder;
+}

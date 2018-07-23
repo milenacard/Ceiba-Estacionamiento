@@ -1,3 +1,4 @@
+import { RegistroEntity } from './../../model/registroEntity.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateRegisterComponent implements OnInit {
 
-  constructor() { }
+  private register: RegistroEntity;
+
+  constructor() {
+    this.register = new RegistroEntity();
+  }
 
   ngOnInit() {
   }
