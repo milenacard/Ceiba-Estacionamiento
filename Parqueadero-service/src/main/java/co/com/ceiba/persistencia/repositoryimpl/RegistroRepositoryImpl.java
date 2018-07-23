@@ -20,7 +20,7 @@ public class RegistroRepositoryImpl implements RegistroRepository{
 	
 	@Override
 	public void registar(Registro registro) {
-		registroJpa.save(RegistroBuilder.convertirAEntidad(registro));
+		registroJpa.saveAndFlush(RegistroBuilder.convertirAEntidad(registro));
 	}
 
 	@Override
