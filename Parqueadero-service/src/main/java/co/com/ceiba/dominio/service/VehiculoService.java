@@ -40,4 +40,9 @@ public class VehiculoService {
 		Optional<VehiculoEntity> vehiculoTmp = vehiculoRepository.obtenerPorId(placa);
 		return vehiculoTmp.isPresent();
 	}
+	
+	public Optional<VehiculoEntity> obtenerPorId(String placa) {
+		return vehiculoRepository.obtenerPorId(placa);
+		
+	}
 }
