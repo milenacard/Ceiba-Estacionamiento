@@ -28,7 +28,7 @@ public class RegistroController {
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public void crear(@RequestBody Registro registro) {
-		registroServicio.crearRegistro(registro);
+		administradorService.registrarIngresoVehiculo(registro);
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)

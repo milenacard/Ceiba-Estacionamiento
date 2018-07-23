@@ -2,19 +2,17 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Vehiculo</th>
       <th scope="col">Tipo Vehiculo</th>
+      <th scope="col">Placa</th>
       <th scope="col">Fecha LLegada</th>
-      <th scope="col"></th>
+      <th scope="col">Registrar Salida</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    <tr *ngFor="let item of registers">
+      <td>{{item.vehiculo.tipoVehiculo.nombre}}</td>
+      <td>{{item.vehiculo.placa}}</td>
+      <td>{{item.fechaLlegada|date:'medium'}}</td>
     </tr>
   </tbody>
 </table>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
-import {RouterModule} from '@angular/router'
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +19,7 @@ import { PaymentComponent } from './components/payment/payment.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    HttpClientModule
   ],
   providers: [RegisterService],
   bootstrap: [AppComponent]

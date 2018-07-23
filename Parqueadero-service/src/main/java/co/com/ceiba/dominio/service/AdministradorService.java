@@ -14,6 +14,9 @@ public class AdministradorService {
 
 	@Autowired
 	VehiculoService vehiculoService;
+	
+	@Autowired
+	RegistroService registroService;
 
 	private RegistroRepository registroRepository;
 	private static final int COD_MOTORCYCLE = 1;
@@ -46,6 +49,7 @@ public class AdministradorService {
 				if(!vehiculoService.existeVehiculo(registro.getVehiculo().getPlaca())) {
 					vehiculoService.crearVehiculo(registro.getVehiculo());
 				}
+				registroService.crearRegistro(registro);
 			} else {
 				throw new ParqueaderoException(THERE_IS_NOT_SPACE_FOR_MOTO);
 			}
@@ -53,7 +57,10 @@ public class AdministradorService {
 
 		if (tipoVehiculo == COD_CAR) {
 			if (cantVehiculosEnParqueadero < 20) {
-				vehiculoService.crearVehiculo(registro.getVehiculo());
+				if(!vehiculoService.existeVehiculo(registro.getVehiculo().getPlaca())) {
+					vehiculoService.crearVehiculo(registro.getVehiculo());
+				}
+				registroService.crearRegistro(registro);
 			} else {
 				throw new ParqueaderoException(THERE_IS_NOT_SPACE_FOR_CARRO);
 			}

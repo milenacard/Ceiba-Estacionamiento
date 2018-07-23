@@ -24,7 +24,6 @@ public class VehiculoService {
 	}
 	
 	public void crearVehiculo(Vehiculo vehiculo) {
-			
 		if(!vehiculo.esValido()){
 			throw new ParqueaderoException(VEHICLE_INVALID);
 		}
