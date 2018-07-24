@@ -1,8 +1,10 @@
+import { TipoVehiculoEntity } from './../../model/tipoVehiculoEntity.model';
 import { VehicleService } from './../../services/vehicle.service';
 import { Component, OnInit } from '@angular/core';
 
 import { VehiculoEntity } from './../../model/vehiculoEntity.model';
 import { RegistroEntity } from './../../model/registroEntity.model';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   selector: 'app-create-register',
@@ -10,29 +12,54 @@ import { RegistroEntity } from './../../model/registroEntity.model';
   styleUrls: ['./create-register.component.css']
 })
 export class CreateRegisterComponent implements OnInit {
+  private sucess = true;
+  private message: string;
   private vehicle: VehiculoEntity = new VehiculoEntity();
+  private tipoVehiculo: TipoVehiculoEntity = new TipoVehiculoEntity();
   private register: RegistroEntity;
   private placa: string;
 
-  constructor(private vehicleService: VehicleService) {
+  constructor(private vehicleService: VehicleService,  private registerService: RegisterService) {
     this.register = new RegistroEntity();
   }
 
   ngOnInit() {
-    this.vehicle.tipoVehiculo.id = 0;
+    this.clearVehicle();
+  }
+
+  private clearVehicle() {
+    this.tipoVehiculo.id = 0;
+    this.vehicle.tipoVehiculo = this.tipoVehiculo;
     this.vehicle.cilindraje = null;
   }
 
   private findVehicle () {
-    this.vehicleService.findVehicle(this.placa.toUpperCase()).subscribe(res => {
-      this.vehicle = res;
-
-      if ( this.vehicle != null || this.vehicle !== undefined ) {
-
+    this.vehicleService.findVehicle(this.vehicle.placa.toUpperCase()).subscribe(
+      res => {
+        this.sucess = true;
+        this.vehicle = res;
+      },
+      err => {
+        this.sucess = false;
+        this.message = err.error.message;
       }
-
-      console.log(res);
-    });
+    );
   }
 
+  private registerVehicle() {
+    this.sucess = true;
+    this.register.vehiculo = this.vehicle;
+    if (this.register.vehiculo.cilindraje == null) {
+      this.register.vehiculo.cilindraje = 0;
+    }
+    this.registerService.createRegister(this.register).subscribe(
+      res => {
+        alert('El vehiculo se ha creado existosamente');
+        console.log(this.register);
+      },
+      err => {
+        this.message = err.error.message;
+      }
+    );
+  }
 }

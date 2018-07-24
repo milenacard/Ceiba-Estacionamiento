@@ -1,28 +1,34 @@
 <h1 class="title-table">Registrar vehiculo</h1>
-<form class="form-register">
+<form class="form-register" #registerForm="ngForm">
+  <div class="alert alert-danger" role="alert" *ngIf="!sucess">
+   {{message}}
+  </div>
   <div class="form-group row">
-      <label for="example-text-input" class="col-2 col-form-label form-label"><span class="require">*</span>Placa:</label>
-      <div class="col-10 text-btn_search">
-        <input class="form-control input-placa" type="text" [(ngModel)]="placa" placeholder="Ingrese placa del vehiculo" name="placa" id="example-text-input">
-        <button type="submit" class="btn btn-primary" id="btn-buscar" (click)="findVehicle()">Buscar</button>
-      </div>
+    <label for="example-text-input" class="col-2 col-form-label form-label">
+      <span class="require">*</span>Placa:</label>
+    <div class="col-10 text-btn_search">
+      <input class="form-control input-placa" type="text" [(ngModel)]="vehicle.placa" placeholder="Ingrese placa del vehiculo" name="placa"
+        id="example-text-input" #placaInput="ngModel" (input)="clearVehicle()" required/>
+      <button type="submit" class="btn btn-primary" id="btn-buscar" (click)="findVehicle()">Buscar</button>
+    </div>
   </div>
   <div class="form-group row row-tipo">
-    <label class="col-2 col-form-label form-label"><span class="require">*</span>Tipo:</label>
+    <label class="col-2 col-form-label form-label">
+      <span class="require">*</span>Tipo:</label>
     <div class="col-10">
-      <select class="form-control" [(ngModel)]="vehicle.tipoVehiculo.id" name="tipoVehiculo">
-        <option [value]="0" selected>Seleccione tipo de vehiculo</option>
+      <select class="form-control" [(ngModel)]="vehicle.tipoVehiculo.id" name="tipoVehiculo" required>
+        <option value="0" selected>Seleccione tipo de vehiculo</option>
         <option [value]="1">Moto</option>
         <option [value]="2">Carro</option>
       </select>
     </div>
-  </div>  
-  <div class="form-group row">
+  </div>
+  <div class="form-group row" *ngIf="vehicle.tipoVehiculo.id == 1">
     <label for="example-search-input" class="col-2 col-form-label form-label">Cilindraje:</label>
     <div class="col-10">
-      <input class="form-control" type="search" [(ngModel)]="vehicle.cilindraje" placeholder="Ingrese cilindraje del vehiculo" name="cilindraje" id="example-search-input">
+      <input class="form-control" type="search"  [(ngModel)]="vehicle.cilindraje" placeholder="Ingrese cilindraje del vehiculo"
+        name="cilindraje" id="example-search-input" required/>
     </div>
   </div>
-  
-  <button type="submit" class="btn btn-success">Registrar</button>
+  <button type="submit" class="btn btn-success" (click)="registerVehicle()" [disabled]="registerForm.invalid || vehicle.tipoVehiculo.id == 0">Registrar</button>
 </form>

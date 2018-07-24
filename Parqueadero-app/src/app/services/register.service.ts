@@ -13,4 +13,8 @@ export class RegisterService {
   public getRegisters(): Observable<RegistroEntity[]> {
     return this.http.get<RegistroEntity[]>('http://localhost:8090/registro/listar');
   }
+
+  public createRegister(registroEntity: RegistroEntity): Observable<RegistroEntity> {
+    return this.http.post<RegistroEntity>('http://localhost:8090/registro/create', registroEntity);
+  }
 }
