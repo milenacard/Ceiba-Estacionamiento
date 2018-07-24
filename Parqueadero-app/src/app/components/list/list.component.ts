@@ -19,7 +19,6 @@ export class ListComponent implements OnInit {
   private loadRegisters(): void {
     this.registerService.getRegisters().subscribe(res => {
       this.registers = res;
-      console.log(res);
     });
   }
 }

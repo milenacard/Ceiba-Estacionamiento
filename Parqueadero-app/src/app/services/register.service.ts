@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from '../../../node_modules/rxjs';
 
 import { RegistroEntity } from '../model/registroEntity.model';
-import { Observable } from '../../../node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root'
