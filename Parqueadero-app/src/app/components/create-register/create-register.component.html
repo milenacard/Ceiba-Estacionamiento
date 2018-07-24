@@ -3,17 +3,17 @@
   <div class="form-group row">
       <label for="example-text-input" class="col-2 col-form-label form-label"><span class="require">*</span>Placa:</label>
       <div class="col-10 text-btn_search">
-        <input class="form-control input-placa" type="text" ng-model="register.vehiculo.placa" placeholder="Ingrese placa del vehiculo" name="placa" id="example-text-input">
-        <button type="submit" class="btn btn-primary" id="btn-buscar" ng-click="">Buscar</button>
+        <input class="form-control input-placa" type="text" [(ngModel)]="placa" placeholder="Ingrese placa del vehiculo" name="placa" id="example-text-input">
+        <button type="submit" class="btn btn-primary" id="btn-buscar" (click)="findVehicle()">Buscar</button>
       </div>
   </div>
   <div class="form-group row row-tipo">
     <label class="col-2 col-form-label form-label"><span class="require">*</span>Tipo:</label>
     <div class="col-10">
-      <select class="form-control" ng-model-options="register.vehiculo.tipoVehiculo.nombre" name="tipoVehiculo">
+      <select class="form-control" [(ngModel)]="vehicle.tipoVehiculo" name="tipoVehiculo">
         <option selected>Seleccione tipo de vehiculo</option>
-        <option value="1">Moto</option>
-        <option value="2">Carro</option>
+        <option [value]=1>Moto</option>
+        <option [value]=2>Carro</option>
       </select>
     </div>
   </div>  

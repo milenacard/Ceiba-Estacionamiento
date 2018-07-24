@@ -1,6 +1,8 @@
+import { VehicleService } from './../../services/vehicle.service';
+import { Component, OnInit } from '@angular/core';
+
 import { VehiculoEntity } from './../../model/vehiculoEntity.model';
 import { RegistroEntity } from './../../model/registroEntity.model';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-create-register',
@@ -8,19 +10,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-register.component.css']
 })
 export class CreateRegisterComponent implements OnInit {
-
+  private vehicle: VehiculoEntity = new VehiculoEntity();
   private register: RegistroEntity;
-  //private vehicle_ VehiculoEntity;
+  private placa: string;
 
-  constructor() {
+  constructor(private vehicleService: VehicleService) {
     this.register = new RegistroEntity();
   }
 
   ngOnInit() {
   }
 
-  private findVehicle() {
-
+  private findVehicle () {
+    this.vehicleService.findVehicle(this.placa.toUpperCase()).subscribe(res => {
+      this.vehicle = res;
+    });
   }
 
 }
