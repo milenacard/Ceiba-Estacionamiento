@@ -19,11 +19,19 @@ export class CreateRegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.vehicle.tipoVehiculo.id = 0;
+    this.vehicle.cilindraje = null;
   }
 
   private findVehicle () {
     this.vehicleService.findVehicle(this.placa.toUpperCase()).subscribe(res => {
       this.vehicle = res;
+
+      if ( this.vehicle != null || this.vehicle !== undefined ) {
+
+      }
+
+      console.log(res);
     });
   }
 

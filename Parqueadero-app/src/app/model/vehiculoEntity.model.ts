@@ -2,6 +2,6 @@ import { TipoVehiculoEntity } from './tipoVehiculoEntity.model';
 
 export class VehiculoEntity {
     placa: string;
-    id_tipoVehiculo: TipoVehiculoEntity;
+    tipoVehiculo: TipoVehiculoEntity;
     cilindraje: number;
 }
