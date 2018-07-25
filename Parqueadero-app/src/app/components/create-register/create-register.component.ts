@@ -64,6 +64,7 @@ export class CreateRegisterComponent extends HandleMessageUtil implements OnInit
   private registerVehicle() {
     this.sucess = true;
     this.vehicle.tipoVehiculo = this.tipoVehiculoSeleccionado;
+    this.vehicle.placa = this.vehicle.placa.toUpperCase();
     this.register.vehiculo = this.vehicle;
     if (this.register.vehiculo.cilindraje == null) {
       this.register.vehiculo.cilindraje = 0;

@@ -35,6 +35,8 @@ export class HandleMessageUtil {
           type: 'warning',
           confirmButtonColor: '#0032a1',
           confirmButtonText: 'Aceptar'
+        }).then(function () {
+          location.toString();
         });
       }
 }
