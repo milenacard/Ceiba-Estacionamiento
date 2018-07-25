@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import co.com.ceiba.WebApplication;
 import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.Vehiculo;
-import co.com.ceiba.dominio.service.AdministradorService;
+import co.com.ceiba.dominio.service.VigilanteService;
 import co.com.ceiba.persistencia.builder.RegistroBuilder;
 import co.com.ceiba.persistencia.builder.TipoVehiculoBuilder;
 import co.com.ceiba.persistencia.builder.VehiculoBuilder;
@@ -27,10 +27,10 @@ import co.com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WebApplication.class)
 @Transactional
-public class AdministradorTest {
+public class VigilanteTest {
 	
 	@Autowired
-	private AdministradorService administradorService;
+	private VigilanteService administradorService;
 	
 	@Autowired
 	private RegistroJpa registroJpa;

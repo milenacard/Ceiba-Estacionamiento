@@ -18,17 +18,17 @@ import co.com.ceiba.dominio.TipoVehiculo;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 import co.com.ceiba.dominio.repository.RegistroRepository;
-import co.com.ceiba.dominio.service.AdministradorService;
+import co.com.ceiba.dominio.service.VigilanteService;
 import co.com.ceiba.dominio.service.RegistroService;
 import co.com.ceiba.dominio.service.VehiculoService;
 import co.com.ceiba.testdatabuilder.RegisterTestDataBuilder;
 import co.com.ceiba.testdatabuilder.TipoVehiculoTestDataBuilder;
 import co.com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
 
-public class AdministradorServiceTest {
+public class VigilanteServiceTest {
 	
 	@InjectMocks
-	private AdministradorService administradorService;
+	private VigilanteService administradorService;
 	private RegistroRepository registroRepository;
 	private RegisterTestDataBuilder registerTestDataBuilder;
 	private VehiculoTestDataBuilder vehiculoTestDataBuilder;
@@ -47,14 +47,13 @@ public class AdministradorServiceTest {
 	public static final String VEHICLE_WITH_NULL_FIELDS = "Verifique que toda la informacion del Registro ha sido ingresada, no se permiten campos vacios";
 	public static final String LISENCE_PLATE_START_WITH_A = "El vehiculo solo puede ingresar los dias Lunes y Domingos";
 	public static final String NOT_EXIST_VEHICLE = "Este vehiculo no se encuentra en el parqueadero";
-	public static final String THERE_IS_NOT_SPACE_FOR_MOTO = "No hay cupo para motos en el parqueadero";
-	public static final String THERE_IS_NOT_SPACE_FOR_CARRO = "No hay cupo para carros en el parqueadero";
+	public static final String THERE_IS_NOT_SPACE_FOR_VEHICLE = "No hay cupo para este tipo de vehiculo en el parqueadero";
 	
 	
 	@Before
 	public void setUp() {
 		registroRepository = Mockito.mock(RegistroRepository.class);
-		administradorService = new AdministradorService(registroRepository);
+		administradorService = new VigilanteService(registroRepository);
 		registerTestDataBuilder = new RegisterTestDataBuilder();
 		vehiculoTestDataBuilder = new VehiculoTestDataBuilder();
 		tipoVehiculoTestDataBuilder = new TipoVehiculoTestDataBuilder();
@@ -84,9 +83,9 @@ public class AdministradorServiceTest {
 		try {
 			//Act
 			administradorService.registrarIngresoVehiculo(registro);
-			fail(THERE_IS_NOT_SPACE_FOR_MOTO);
+			fail(THERE_IS_NOT_SPACE_FOR_VEHICLE);
 		} catch (ParqueaderoException e) {
-			assertEquals((THERE_IS_NOT_SPACE_FOR_MOTO), e.getMessage());
+			assertEquals((THERE_IS_NOT_SPACE_FOR_VEHICLE), e.getMessage());
 		}
 	}
 	
@@ -97,11 +96,11 @@ public class AdministradorServiceTest {
 		Vehiculo vehiculo = vehiculoTestDataBuilder.setTipoVehiculo(tipoVehiculo).build();
 		Registro registro = registerTestDataBuilder.setVehiculo(vehiculo).build();
 		Mockito.when(registroRepository.numeroVehiculosEnParqueadero(COD_CARRO)).thenReturn(19);
-		Mockito.doNothing().when(registroService).crearRegistro(registro);
+		Mockito.doNothing().when(vehiculoService).crearVehiculo(vehiculo);
 		//Act
 		administradorService.registrarIngresoVehiculo(registro);
 		//Assert
-		Mockito.verify(registroService).crearRegistro(registro);
+		Mockito.verify(vehiculoService).crearVehiculo(vehiculo);
 	}
 	
 	@Test
@@ -115,9 +114,9 @@ public class AdministradorServiceTest {
 		try {
 			//Act
 			administradorService.registrarIngresoVehiculo(registro);
-			fail(THERE_IS_NOT_SPACE_FOR_CARRO);
+			fail(THERE_IS_NOT_SPACE_FOR_VEHICLE);
 		} catch (ParqueaderoException e) {
-			assertEquals((THERE_IS_NOT_SPACE_FOR_CARRO), e.getMessage());
+			assertEquals((THERE_IS_NOT_SPACE_FOR_VEHICLE), e.getMessage());
 		}
 	}
 
@@ -132,6 +131,17 @@ public class AdministradorServiceTest {
 		} catch (ParqueaderoException e) {
 				assertEquals((LISENCE_PLATE_START_WITH_A), e.getMessage());
 		}
+	}
+	
+	@Test
+	public void validarPlacaIniciaconBTest() {
+		//Assert
+		try {
+		//Act
+			administradorService.validarPlaca("BXD345");
+		} catch (ParqueaderoException e) {
+			assertEquals("", e.getMessage());
+		}		
 	}
 	
 	@Test

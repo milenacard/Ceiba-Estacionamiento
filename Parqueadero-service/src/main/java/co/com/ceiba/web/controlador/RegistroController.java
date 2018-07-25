@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import co.com.ceiba.dominio.Registro;
-import co.com.ceiba.dominio.service.AdministradorService;
+import co.com.ceiba.dominio.service.VigilanteService;
 import co.com.ceiba.dominio.service.RegistroService;
 
 @RestController
@@ -21,7 +21,7 @@ public class RegistroController {
 	RegistroService registroServicio;
 	
 	@Autowired
-	AdministradorService administradorService;
+	VigilanteService administradorService;
 	
 	@RequestMapping(value = "/listar", method=RequestMethod.GET)
 	public List<Registro> listar() {

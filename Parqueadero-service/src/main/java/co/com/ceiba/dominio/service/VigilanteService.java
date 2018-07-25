@@ -5,12 +5,14 @@ import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import co.com.ceiba.dominio.Celda;
+import co.com.ceiba.dominio.FactoryCelda;
 import co.com.ceiba.dominio.Registro;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 import co.com.ceiba.dominio.repository.RegistroRepository;
 
-public class AdministradorService {
+public class VigilanteService {
 
 	@Autowired
 	VehiculoService vehiculoService;
@@ -20,7 +22,6 @@ public class AdministradorService {
 
 	private RegistroRepository registroRepository;
 	private static final int COD_MOTORCYCLE = 1;
-	private static final int COD_CAR = 2;
 	private static final int CILYNDER_MAX = 500;
 	private static final int START_TIME_DAY = 9;
 	private static final int CAR_HOUR_VALUE = 1000;
@@ -29,37 +30,30 @@ public class AdministradorService {
 	private static final int MOTORCYCLE_DAY_VALUE = 4000;
 	private static final int SURPLUS_MOTORCYCLE = 2000;
 
-	public AdministradorService(RegistroRepository registroRepository) {
+	public VigilanteService(RegistroRepository registroRepository) {
 		this.registroRepository = registroRepository;
 	}
 
 	public static final String VEHICLE_WITH_NULL_FIELDS = "Verifique que toda la informacion del Registro ha sido ingresada, no se permiten campos vacios";
 	public static final String LISENCE_PLATE_START_WITH_A = "El vehiculo solo puede ingresar los dias Lunes y Domingos";
 	public static final String NOT_EXIST_VEHICLE = "Este vehiculo no se encuentra en el parqueadero";
-	public static final String THERE_IS_NOT_SPACE_FOR_MOTO = "No hay cupo para motos en el parqueadero";
-	public static final String THERE_IS_NOT_SPACE_FOR_CARRO = "No hay cupo para carros en el parqueadero";
+	public static final String THERE_IS_NOT_SPACE_FOR_VEHICLE = "No hay cupo para este tipo de vehiculo en el parqueadero";
 	public static final String EXIST_REGISTER = "El registro del vehiculo ya se encuentra ingresado en el sistema";
-
+	public static final int CANT_HORAS_DIA = 24;
+	
 	public void registrarIngresoVehiculo(Registro registro) {
 		int tipoVehiculo = registro.getVehiculo().getTipoVehiculo().getCodigo();
 		int cantVehiculosEnParqueadero = contarVehiculos(tipoVehiculo);
 
-		if (tipoVehiculo == COD_MOTORCYCLE) {
-			if (cantVehiculosEnParqueadero < 10) {
-				validarPlaca(registro.getVehiculo().getPlaca());
-				ingresarAParqueadero(registro);
-			} else {
-				throw new ParqueaderoException(THERE_IS_NOT_SPACE_FOR_MOTO);
-			}
+		Celda celda = FactoryCelda.obtenerCelda(tipoVehiculo);
+		
+		if( cantVehiculosEnParqueadero >= celda.getMaximoCelda() ) {
+			throw new ParqueaderoException(THERE_IS_NOT_SPACE_FOR_VEHICLE);
 		}
+			
+		validarPlaca(registro.getVehiculo().getPlaca());
+		ingresarAParqueadero(registro);
 
-		if (tipoVehiculo == COD_CAR) {
-			if (cantVehiculosEnParqueadero < 20) {
-				ingresarAParqueadero(registro);
-			} else {
-				throw new ParqueaderoException(THERE_IS_NOT_SPACE_FOR_CARRO);
-			}
-		}
 	}
 
 	public void registrarSalidaVehiculo(Registro registro) {
@@ -123,7 +117,7 @@ public class AdministradorService {
 		
 		horaDeEntrada = fechaLlegada.get(Calendar.HOUR_OF_DAY);
 		horaDeSalida = fechaSalida.get(Calendar.HOUR_OF_DAY);
-		tiempoTotal = (totalDias * 24) + horaDeSalida - horaDeEntrada;
+		tiempoTotal = (totalDias * CANT_HORAS_DIA) + horaDeSalida - horaDeEntrada;
 		
 		return tiempoTotal;
 	}
@@ -136,10 +130,10 @@ public class AdministradorService {
 		
 		totalTiempoEnParqueadero = calcularTiempoEnParqueadero(fechaLlegada, fechaSalida);
 		
-		if(totalTiempoEnParqueadero >= 24) {
-			horas = totalTiempoEnParqueadero % 24;
-			dias = totalTiempoEnParqueadero / 24;
-		}else if(totalTiempoEnParqueadero > START_TIME_DAY && totalTiempoEnParqueadero <= 24) {
+		if(totalTiempoEnParqueadero >= CANT_HORAS_DIA) {
+			horas = totalTiempoEnParqueadero % CANT_HORAS_DIA;
+			dias = totalTiempoEnParqueadero / CANT_HORAS_DIA;
+		}else if(totalTiempoEnParqueadero > START_TIME_DAY && totalTiempoEnParqueadero <= CANT_HORAS_DIA) {
 			dias= 1;
 		}else {
 			horas = totalTiempoEnParqueadero;

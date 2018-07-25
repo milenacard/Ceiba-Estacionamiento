@@ -1,0 +1,14 @@
+body{
+    text-align: center; 
+    margin: 0 auto;
+}
+
+.form-departure{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.title-form{
+    padding: 15px;
+    text-align: center;
+}
