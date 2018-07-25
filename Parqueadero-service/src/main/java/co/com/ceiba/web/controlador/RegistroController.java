@@ -3,6 +3,7 @@ package co.com.ceiba.web.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,7 @@ import co.com.ceiba.dominio.service.AdministradorService;
 import co.com.ceiba.dominio.service.RegistroService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/registro")
 public class RegistroController {
 	

@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.com.ceiba.dominio.Vehiculo;
@@ -14,6 +16,7 @@ import co.com.ceiba.dominio.service.VehiculoService;
 import co.com.ceiba.persistencia.entity.VehiculoEntity;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/vehiculo")
 public class VehiculoController {
 
@@ -30,8 +33,8 @@ public class VehiculoController {
 		vehiculoService.crearVehiculo(vehiculo);
 	}
 	
-	@RequestMapping(value = "/id", method=RequestMethod.GET)
-	public Optional<VehiculoEntity> obtenerPorId(String placa) {
+	@RequestMapping(value = "/find", method=RequestMethod.GET)
+	public Optional<VehiculoEntity> obtenerPorId(@RequestParam String placa) {
 		return vehiculoService.obtenerPorId(placa);
 	}
 

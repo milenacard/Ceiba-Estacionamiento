@@ -70,8 +70,7 @@ public class VehiculoControllerTest {
 		assertNotNull(vehiculoJpa.findById(vehiculo.getPlaca()));
 	}
 	
-	//TODO Mirar la prueba
-	//@Test
+	@Test
 	public void obtenerVehiculoPorIdTest() {
 		//arrange
 		vehiculoJpa.save(VehiculoBuilder.convertirAEntidad(vehiculoTestDataBuilder.build()));

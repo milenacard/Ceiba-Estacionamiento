@@ -12,7 +12,7 @@ import { HandleMessageUtil } from './../../utilities/HandleMessagesUtil';
 @Component({
   selector: 'app-create-register',
   templateUrl: './create-register.component.html',
-  styleUrls: ['./create-register.component.css']
+  styleUrls: ['./create-register.component.css'],
 })
 export class CreateRegisterComponent extends HandleMessageUtil implements OnInit {
   private sucess = true;

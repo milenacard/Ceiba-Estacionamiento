@@ -12,6 +12,7 @@ public class VehiculoService {
 	
 	public static final String 	VEHICLE_INVALID = "Vehiculo invalido";
 	public static final String EXIST_VEHICLE = "El vehiculo ya existe en la Base de datos";
+	public static final String NO_EXIST_VEHICLE = "El vehiculo no existe en la Base de datos. Por favor diligencie los datos y presione clic en Registrar";
 
 	private VehiculoRepository vehiculoRepository;
 	
@@ -42,6 +43,11 @@ public class VehiculoService {
 	}
 	
 	public Optional<VehiculoEntity> obtenerPorId(String placa) {
+		Optional<VehiculoEntity> vehiculoTmp = vehiculoRepository.obtenerPorId(placa);
+		
+		if(!vehiculoTmp.isPresent()) {
+			throw new ParqueaderoException(NO_EXIST_VEHICLE);
+		}
 		return vehiculoRepository.obtenerPorId(placa);
 		
 	}
