@@ -7,17 +7,17 @@ import { AppComponent } from './app.component';
 
 import { RegisterService } from './services/register.service';
 import { ListComponent } from './components/list/list.component';
-import { PaymentComponent } from './components/payment/payment.component';
 import { CreateRegisterComponent } from './components/create-register/create-register.component';
-import { VehicleService } from './services/vehicle.service';
+import { VehicleService } from './services/vehicle.service';;
+import { CreateDepartureComponent } from './components/create-departure/create-departure.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    PaymentComponent,
-    CreateRegisterComponent
+    CreateRegisterComponent,
+    CreateDepartureComponent
   ],
   imports: [
     BrowserModule,

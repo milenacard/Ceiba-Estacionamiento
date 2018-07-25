@@ -5,7 +5,7 @@
       <th scope="col">Tipo vehiculo</th>
       <th scope="col">Placa</th>
       <th scope="col">Fecha y hora de llegada</th>
-      <th scope="col">Registrar salida</th>
+      <th scope="col">Salida de vehiculo</th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +13,7 @@
       <td>{{item.vehiculo.tipoVehiculo.nombre}}</td>
       <td>{{item.vehiculo.placa}}</td>
       <td>{{item.fechaLlegada|date:'medium'}}</td>
+      <button type="button"[routerLink] = "['/createDepartureComponent']" class="btn btn-danger">Registrar</button>
     </tr>
   </tbody>
 </table>

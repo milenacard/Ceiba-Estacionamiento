@@ -1,4 +1,15 @@
 .title-table{
-    padding: 15px;
+    padding: 5px;
     text-align: center;
+}
+
+.table{
+    text-align: center;
+}
+
+table{
+    margin: 0 auto;
+    padding: 1%;
+    border-collapse: separate;
+    
 }
