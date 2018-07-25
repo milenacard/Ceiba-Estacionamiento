@@ -16,19 +16,19 @@
     <label class="col-2 col-form-label form-label">
       <span class="require">*</span>Tipo:</label>
     <div class="col-10">
-      <select class="form-control" [(ngModel)]="vehicle.tipoVehiculo.id" name="tipoVehiculo" required>
-        <option value="0" selected>Seleccione tipo de vehiculo</option>
-        <option [value]="1">Moto</option>
-        <option [value]="2">Carro</option>
-      </select>
+        <select required [(ngModel)]="tipoVehiculoSeleccionado"  name="select tipoVehiculo" class="form-control">
+            <option *ngFor="let item of listTipoVehiculo" [ngValue]="item" ngDefaultControl>{{item.nombre}}</option>
+        </select>
     </div>
   </div>
-  <div class="form-group row" *ngIf="vehicle.tipoVehiculo.id == 1">
+  <div class="form-group row" *ngIf="tipoVehiculoSeleccionado.codigo == 1">
     <label for="example-search-input" class="col-2 col-form-label form-label">Cilindraje:</label>
     <div class="col-10">
       <input class="form-control" type="search"  [(ngModel)]="vehicle.cilindraje" placeholder="Ingrese cilindraje del vehiculo"
         name="cilindraje" id="example-search-input" required/>
     </div>
   </div>
-  <button type="submit" class="btn btn-success" (click)="registerVehicle()" [disabled]="registerForm.invalid || vehicle.tipoVehiculo.id == 0">Registrar</button>
+
+  
+  <button type="submit" class="btn btn-success" (click)="registerVehicle()" [disabled]="registerForm.invalid">Registrar</button>
 </form>

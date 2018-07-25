@@ -1,4 +1,4 @@
 export class TipoVehiculoEntity {
-    id: number;
+    codigo: number;
     nombre: string;
 }
