@@ -4,6 +4,8 @@ import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 
 public class FactoryCelda {
 	
+	private FactoryCelda() {}
+	
 	public static Celda obtenerCelda(int tipoVehiculo) {
 		Celda celda = null;
 		switch(tipoVehiculo) {

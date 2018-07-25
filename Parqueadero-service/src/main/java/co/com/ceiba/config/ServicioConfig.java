@@ -5,9 +5,9 @@ import org.springframework.context.annotation.Configuration;
 
 import co.com.ceiba.dominio.repository.RegistroRepository;
 import co.com.ceiba.dominio.repository.VehiculoRepository;
-import co.com.ceiba.dominio.service.VigilanteService;
 import co.com.ceiba.dominio.service.RegistroService;
 import co.com.ceiba.dominio.service.VehiculoService;
+import co.com.ceiba.dominio.service.VigilanteService;
 
 @Configuration
 public class ServicioConfig {

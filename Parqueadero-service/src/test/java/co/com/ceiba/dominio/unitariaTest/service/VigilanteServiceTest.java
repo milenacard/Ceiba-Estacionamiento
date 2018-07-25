@@ -18,9 +18,9 @@ import co.com.ceiba.dominio.TipoVehiculo;
 import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 import co.com.ceiba.dominio.repository.RegistroRepository;
-import co.com.ceiba.dominio.service.VigilanteService;
 import co.com.ceiba.dominio.service.RegistroService;
 import co.com.ceiba.dominio.service.VehiculoService;
+import co.com.ceiba.dominio.service.VigilanteService;
 import co.com.ceiba.testdatabuilder.RegisterTestDataBuilder;
 import co.com.ceiba.testdatabuilder.TipoVehiculoTestDataBuilder;
 import co.com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
@@ -41,6 +41,7 @@ public class VigilanteServiceTest {
 	
 	@Mock
 	private RegistroService registroService;
+	
 	
 	private static final int COD_MOTO = 1;
 	private static final int COD_CARRO = 2;	
@@ -126,7 +127,7 @@ public class VigilanteServiceTest {
 		//Assert
 		try {
 		//Act
-			administradorService.validarPlaca("AXD345");
+			administradorService.validarPlaca("AXD345", Calendar.getInstance());
 			fail(LISENCE_PLATE_START_WITH_A);
 		} catch (ParqueaderoException e) {
 				assertEquals((LISENCE_PLATE_START_WITH_A), e.getMessage());
@@ -138,7 +139,7 @@ public class VigilanteServiceTest {
 		//Assert
 		try {
 		//Act
-			administradorService.validarPlaca("BXD345");
+			administradorService.validarPlaca("BXD345", Calendar.getInstance());
 		} catch (ParqueaderoException e) {
 			assertEquals("", e.getMessage());
 		}		

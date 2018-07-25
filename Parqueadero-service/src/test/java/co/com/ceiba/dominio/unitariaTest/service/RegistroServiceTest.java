@@ -12,12 +12,10 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import co.com.ceiba.dominio.Registro;
-import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.dominio.excepcion.ParqueaderoException;
 import co.com.ceiba.dominio.repository.RegistroRepository;
 import co.com.ceiba.dominio.service.RegistroService;
 import co.com.ceiba.testdatabuilder.RegisterTestDataBuilder;
-import co.com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
 
 
 public class RegistroServiceTest {
@@ -25,7 +23,6 @@ public class RegistroServiceTest {
 	private RegistroRepository registroRepository;
 	private RegistroService registroServicio;
 	private RegisterTestDataBuilder registerTestDataBuilder;
-	private VehiculoTestDataBuilder vehiculoTestDataBuilder;
 	
 	private static final String REGISTER_INVALID = "Registro invalido";
 	
@@ -34,7 +31,6 @@ public class RegistroServiceTest {
 		registroRepository = Mockito.mock(RegistroRepository.class);
 		registroServicio = new RegistroService(registroRepository);
 		registerTestDataBuilder = new RegisterTestDataBuilder();
-		vehiculoTestDataBuilder = new VehiculoTestDataBuilder();
 	}
 	
 	@Test

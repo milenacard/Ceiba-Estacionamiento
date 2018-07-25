@@ -61,7 +61,7 @@ public class Registro {
 	}
 	
 	public boolean esValido() {
-		return !(getVehiculo() == null);
+		return (getVehiculo() != null);
 	}
 
 }

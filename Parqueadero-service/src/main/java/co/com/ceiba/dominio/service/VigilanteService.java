@@ -19,7 +19,7 @@ public class VigilanteService {
 	
 	@Autowired
 	RegistroService registroService;
-
+	
 	private RegistroRepository registroRepository;
 	private static final int COD_MOTORCYCLE = 1;
 	private static final int CILYNDER_MAX = 500;
@@ -44,6 +44,7 @@ public class VigilanteService {
 	public void registrarIngresoVehiculo(Registro registro) {
 		int tipoVehiculo = registro.getVehiculo().getTipoVehiculo().getCodigo();
 		int cantVehiculosEnParqueadero = contarVehiculos(tipoVehiculo);
+		registro.setFechaLlegada(Calendar.getInstance());
 
 		Celda celda = FactoryCelda.obtenerCelda(tipoVehiculo);
 		
@@ -51,7 +52,7 @@ public class VigilanteService {
 			throw new ParqueaderoException(THERE_IS_NOT_SPACE_FOR_VEHICLE);
 		}
 			
-		validarPlaca(registro.getVehiculo().getPlaca());
+		validarPlaca(registro.getVehiculo().getPlaca(), registro.getFechaLlegada());
 		ingresarAParqueadero(registro);
 
 	}
@@ -73,8 +74,7 @@ public class VigilanteService {
 		return registroRepository.numeroVehiculosEnParqueadero(idTipoVehiculo);
 	}
 
-	public void validarPlaca(String placaVehiculo) {
-		Calendar calendar = Calendar.getInstance();
+	public void validarPlaca(String placaVehiculo, Calendar calendar) {
 		if (calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.US).toUpperCase() != "MONDAY"
 				&& calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.US).toUpperCase() != "SUNDAY"
 				&& placaVehiculo.startsWith("A")) {

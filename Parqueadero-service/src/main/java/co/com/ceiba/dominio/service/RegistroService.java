@@ -1,6 +1,5 @@
 package co.com.ceiba.dominio.service;
 
-import java.util.Calendar;
 import java.util.List;
 
 import co.com.ceiba.dominio.Registro;
@@ -24,7 +23,6 @@ public class RegistroService {
 		if(!registro.esValido()){
 			throw new ParqueaderoException(REGISTER_INVALID);
 		}else {
-			registro.setFechaLlegada(Calendar.getInstance());
 			registroRepository.registar(registro);
 		}
 	}
